@@ -29,12 +29,26 @@ A map-first, mobile-first itinerary app for a 7-day Singapore trip (16–22 May 
 - The user has installed shadcn-related skills and UI/UX skills via `/plugin`. When adding a component, prefer skill-guided generation over hand-rolling.
 - For component lookups, prefer the shadcn MCP server (if registered) over guessing API shapes from memory.
 
+## Deploying
+
+There are two remotes:
+- `origin` — GitHub (`skonyy/singapore-week`) — for code review / PRs
+- `planny` — GitHub (`skonyy/Planny`) — **connected to Vercel; push here to deploy**
+
+After every commit, push to both:
+```
+git push origin HEAD
+git push planny HEAD:main
+```
+
+Or to deploy only: `git push planny HEAD:main`
+
 ## Common tasks
 
 - **Add a place**: edit `data/itinerary.json`. Zod will fail the build if the shape is wrong. See [docs/content-guide.md](docs/content-guide.md).
 - **Add a shadcn component**: `npx shadcn@latest add <name>` — they land in `components/ui/`.
 - **Tweak design tokens**: `app/globals.css` `:root { … }`. Document the new var in [docs/design-tokens.md](docs/design-tokens.md).
-- **Edit on the go**: see "Editing the itinerary after launch" in [docs/content-guide.md](docs/content-guide.md). GitHub mobile web → commit → Vercel auto-deploy.
+- **Edit on the go**: see "Editing the itinerary after launch" in [docs/content-guide.md](docs/content-guide.md). GitHub mobile web → commit to `planny/main` → Vercel auto-deploy.
 
 ## Don'ts
 
