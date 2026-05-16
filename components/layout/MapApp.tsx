@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MapView } from "@/components/map/MapView";
 import { DayPills } from "@/components/itinerary/DayPills";
@@ -29,13 +29,11 @@ export function MapApp() {
   const searchParams = useSearchParams();
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  // useSearchParams() lags on initial render for force-static pages — read
-  // window.location directly so the URL is correct on first paint.
-  const [urlState, setUrlState] = useState<UrlState>(() => {
-    if (typeof window === "undefined") return { day: null, placeId: null };
-    return parseUrlState(new URLSearchParams(window.location.search));
-  });
-  useEffect(() => {
+  // Start with null state (matches SSR), then sync the URL before first paint.
+  // useLayoutEffect fires synchronously after hydration commit but before the
+  // browser paints, so the user never sees the "All" pill selected on a day URL.
+  const [urlState, setUrlState] = useState<UrlState>({ day: null, placeId: null });
+  useLayoutEffect(() => {
     setUrlState(parseUrlState(new URLSearchParams(window.location.search)));
   }, [searchParams]);
   const { day: activeDay, placeId: selectedPlaceId } = urlState;
