@@ -8,7 +8,6 @@ import {
   parseHHmm,
   sortPlacesByTime,
 } from "@/lib/time";
-import { Badge } from "@/components/ui/badge";
 import { Star, Ticket } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -80,19 +79,11 @@ export function PlaceList({
                       )}
                     </span>
                     <span className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                      {place.startTime && place.endTime ? (
-                        <span className="font-medium text-foreground/80">
-                          {formatTimeRange(place.startTime, place.endTime)}
-                          {" · "}
-                          {formatDuration(
-                            parseHHmm(place.endTime) - parseHHmm(place.startTime)
-                          )}
-                        </span>
-                      ) : (
-                        <Badge variant="outline" className="font-normal capitalize">
-                          {place.timeOfDay}
-                        </Badge>
-                      )}
+                      <span className="capitalize tabular-nums">
+                        {place.startTime && place.endTime
+                          ? `${formatTimeRange(place.startTime, place.endTime)} · ${formatDuration(parseHHmm(place.endTime) - parseHHmm(place.startTime))}`
+                          : place.timeOfDay}
+                      </span>
                       <span className="capitalize">{place.category}</span>
                       {place.googleRating != null && (
                         <span className="flex items-center gap-0.5">
