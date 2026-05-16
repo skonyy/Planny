@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Ticket } from "lucide-react";
 import { useMediaQuery } from "@/lib/hooks/use-media-query";
 import { parseUrlState, serializeUrlState } from "@/lib/url-state";
+import { days } from "@/lib/data/itinerary";
 
 const DESKTOP_LEFT_PAD = 400 + 16;
 
@@ -66,6 +67,18 @@ export function MapApp() {
     (day: number | null) => updateUrl({ day, placeId: null }),
     [updateUrl]
   );
+
+  const maxDay = days[days.length - 1]?.number ?? 7;
+
+  const handleSwipeLeft = useCallback(() => {
+    if (activeDay === null) handleDayChange(1);
+    else if (activeDay < maxDay) handleDayChange(activeDay + 1);
+  }, [activeDay, maxDay, handleDayChange]);
+
+  const handleSwipeRight = useCallback(() => {
+    if (activeDay === null) return;
+    handleDayChange(activeDay === 1 ? null : activeDay - 1);
+  }, [activeDay, handleDayChange]);
 
   const [viewportH, setViewportH] = useState(0);
   useEffect(() => {
@@ -132,7 +145,7 @@ export function MapApp() {
             </div>
           </div>
           <FabReservations onClick={() => setReservationsOpen(true)} />
-          <BottomSheet snap={snap} onSnapChange={setSnap}>
+          <BottomSheet snap={snap} onSnapChange={setSnap} onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight}>
             {selectedPlaceId ? (
               <PlaceDetail placeId={selectedPlaceId} onBack={handleBack} />
             ) : (
