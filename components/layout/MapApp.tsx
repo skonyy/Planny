@@ -107,6 +107,7 @@ export function MapApp() {
           selectedPlaceId={selectedPlaceId}
           onSelectPlace={handleSelectPlace}
           bottomPadding={sheetBottomPadding}
+          showNavigation={isDesktop}
         />
       </div>
 
