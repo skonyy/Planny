@@ -9,7 +9,7 @@ export type SheetSnap = (typeof SHEET_SNAP_POINTS)[number];
 
 const SWIPE_THRESHOLD_PX = 50;
 const SWIPE_RATIO = 1.5;
-const DIRECTION_LOCK_PX = 6; // pixels of movement before locking to horizontal or vertical
+const DIRECTION_LOCK_PX = 6;
 
 interface BottomSheetProps {
   snap: SheetSnap | null;
@@ -30,7 +30,10 @@ export function BottomSheet({
 }: BottomSheetProps) {
   const contentRef = React.useRef<HTMLDivElement>(null);
   const animating = React.useRef(false);
-  // Keep latest callbacks in refs so the effect closure never goes stale
+  const dragStart = React.useRef<{ x: number; y: number } | null>(null);
+  const gestureDir = React.useRef<"horizontal" | "vertical" | null>(null);
+
+  // Keep callbacks in refs so handlers never go stale
   const onSwipeLeftRef = React.useRef(onSwipeLeft);
   const onSwipeRightRef = React.useRef(onSwipeRight);
   React.useEffect(() => {
@@ -38,48 +41,63 @@ export function BottomSheet({
     onSwipeRightRef.current = onSwipeRight;
   });
 
-  React.useEffect(() => {
-    const el = contentRef.current;
-    if (!el) return;
+  const handlePointerDown = React.useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      if (animating.current || e.pointerType === "mouse") return;
+      dragStart.current = { x: e.clientX, y: e.clientY };
+      gestureDir.current = null;
+      // Capture so we keep receiving events even if pointer leaves the element
+      e.currentTarget.setPointerCapture(e.pointerId);
+      const el = contentRef.current;
+      if (el) el.style.transition = "none";
+    },
+    []
+  );
 
-    let startX = 0;
-    let startY = 0;
-    let direction: "horizontal" | "vertical" | null = null;
+  const handlePointerMove = React.useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      const el = contentRef.current;
+      if (!dragStart.current || !el || animating.current) return;
 
-    const onTouchStart = (e: TouchEvent) => {
-      if (animating.current) return;
-      startX = e.touches[0].clientX;
-      startY = e.touches[0].clientY;
-      direction = null;
-      el.style.transition = "none";
-    };
+      const dx = e.clientX - dragStart.current.x;
+      const dy = e.clientY - dragStart.current.y;
 
-    const onTouchMove = (e: TouchEvent) => {
-      if (animating.current) return;
-      const dx = e.touches[0].clientX - startX;
-      const dy = e.touches[0].clientY - startY;
+      if (
+        gestureDir.current === null &&
+        (Math.abs(dx) > DIRECTION_LOCK_PX || Math.abs(dy) > DIRECTION_LOCK_PX)
+      ) {
+        gestureDir.current = Math.abs(dx) > Math.abs(dy) ? "horizontal" : "vertical";
 
-      // Determine direction once movement crosses the lock threshold
-      if (direction === null && (Math.abs(dx) > DIRECTION_LOCK_PX || Math.abs(dy) > DIRECTION_LOCK_PX)) {
-        direction = Math.abs(dx) > Math.abs(dy) ? "horizontal" : "vertical";
+        if (gestureDir.current === "vertical") {
+          // Release capture — let vaul handle snap-point dragging normally
+          e.currentTarget.releasePointerCapture(e.pointerId);
+          dragStart.current = null;
+          return;
+        }
       }
 
-      if (direction === "horizontal") {
-        // Prevent default cancels browser scroll AND vaul's pointer events (browser spec)
-        e.preventDefault();
+      if (gestureDir.current === "horizontal") {
+        // Stop propagation so vaul's onPointerMove doesn't fire → sheet stays put
+        e.stopPropagation();
         el.style.transform = `translateX(${dx * 0.7}px)`;
       }
-      // vertical: do nothing — vaul handles snap-point dragging normally
-    };
+    },
+    []
+  );
 
-    const onTouchEnd = (e: TouchEvent) => {
-      if (animating.current || direction !== "horizontal") {
-        direction = null;
+  const handlePointerUp = React.useCallback(
+    (e: React.PointerEvent<HTMLDivElement>) => {
+      const el = contentRef.current;
+      if (!dragStart.current || !el || gestureDir.current !== "horizontal") {
+        dragStart.current = null;
+        gestureDir.current = null;
         return;
       }
-      const dx = e.changedTouches[0].clientX - startX;
-      const dy = e.changedTouches[0].clientY - startY;
-      direction = null;
+
+      const dx = e.clientX - dragStart.current.x;
+      const dy = e.clientY - dragStart.current.y;
+      dragStart.current = null;
+      gestureDir.current = null;
 
       const isSwipe =
         Math.abs(dx) > SWIPE_THRESHOLD_PX &&
@@ -112,18 +130,19 @@ export function BottomSheet({
         el.style.transition = "transform 280ms cubic-bezier(0.25, 1, 0.5, 1)";
         el.style.transform = "translateX(0)";
       }
-    };
+    },
+    []
+  );
 
-    el.addEventListener("touchstart", onTouchStart, { passive: true });
-    el.addEventListener("touchmove", onTouchMove, { passive: false });
-    el.addEventListener("touchend", onTouchEnd, { passive: true });
-
-    return () => {
-      el.removeEventListener("touchstart", onTouchStart);
-      el.removeEventListener("touchmove", onTouchMove);
-      el.removeEventListener("touchend", onTouchEnd);
-    };
-  }, []); // stable: callbacks read from refs, el from ref
+  const handlePointerCancel = React.useCallback(() => {
+    dragStart.current = null;
+    gestureDir.current = null;
+    const el = contentRef.current;
+    if (el) {
+      el.style.transition = "transform 280ms cubic-bezier(0.25, 1, 0.5, 1)";
+      el.style.transform = "translateX(0)";
+    }
+  }, []);
 
   return (
     <Vaul.Root
@@ -149,7 +168,14 @@ export function BottomSheet({
             Singapore week — places by day with reservations and tips.
           </Vaul.Description>
           <div className="mx-auto my-2 h-1.5 w-12 shrink-0 rounded-full bg-muted" />
-          <div ref={contentRef} className="flex min-h-0 flex-1 flex-col">
+          <div
+            ref={contentRef}
+            className="flex min-h-0 flex-1 flex-col"
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={handlePointerCancel}
+          >
             {children}
           </div>
         </Vaul.Content>
