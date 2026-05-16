@@ -4,9 +4,12 @@ import { useEffect, useMemo, useRef } from "react";
 import Map, {
   Marker,
   NavigationControl,
+  Source,
+  Layer,
   type MapRef,
 } from "react-map-gl/maplibre";
 import { places } from "@/lib/data/itinerary";
+import { sortPlacesByTime } from "@/lib/time";
 import { PlaceMarker } from "./PlaceMarker";
 
 const SINGAPORE_VIEW = {
@@ -24,6 +27,7 @@ interface MapViewProps {
   bottomPadding?: number;
   showNavigation?: boolean;
   userLocation?: { lat: number; lng: number } | null;
+  showRoute?: boolean;
 }
 
 export function MapView({
@@ -33,6 +37,7 @@ export function MapView({
   bottomPadding = 200,
   showNavigation = true,
   userLocation,
+  showRoute = true,
 }: MapViewProps) {
   const mapRef = useRef<MapRef>(null);
   const hasFlownToUser = useRef(false);
@@ -41,6 +46,20 @@ export function MapView({
     () => (activeDay == null ? places : places.filter((p) => p.day === activeDay)),
     [activeDay]
   );
+
+  const routeGeoJSON = useMemo(() => {
+    if (activeDay == null || !showRoute) return null;
+    const ordered = sortPlacesByTime(visible);
+    if (ordered.length < 2) return null;
+    return {
+      type: "Feature" as const,
+      properties: {},
+      geometry: {
+        type: "LineString" as const,
+        coordinates: ordered.map((p) => [p.lng, p.lat]),
+      },
+    };
+  }, [activeDay, showRoute, visible]);
 
   useEffect(() => {
     const map = mapRef.current;
@@ -112,6 +131,22 @@ export function MapView({
       style={{ width: "100%", height: "100%" }}
     >
       {showNavigation && <NavigationControl position="top-right" showCompass={false} />}
+
+      {routeGeoJSON && (
+        <Source id="day-route" type="geojson" data={routeGeoJSON}>
+          <Layer
+            id="day-route-line"
+            type="line"
+            paint={{
+              "line-color": "#374151",
+              "line-width": 2.5,
+              "line-opacity": 0.55,
+              "line-dasharray": [2, 2],
+            }}
+            layout={{ "line-cap": "round", "line-join": "round" }}
+          />
+        </Source>
+      )}
 
       {userLocation && (
         <Marker

@@ -15,7 +15,7 @@ import {
 import { DesktopPanel } from "@/components/layout/DesktopPanel";
 import { FabReservations } from "@/components/layout/FabReservations";
 import { Button } from "@/components/ui/button";
-import { Ticket, LocateFixed } from "lucide-react";
+import { Ticket, LocateFixed, Route } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useMediaQuery } from "@/lib/hooks/use-media-query";
@@ -44,6 +44,7 @@ export function MapApp() {
   const [reservationsOpen, setReservationsOpen] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [isTracking, setIsTracking] = useState(false);
+  const [showRoute, setShowRoute] = useState(true);
   const watchIdRef = useRef<number | null>(null);
 
   const handleGeolocate = useCallback(() => {
@@ -144,6 +145,7 @@ export function MapApp() {
           bottomPadding={sheetBottomPadding}
           showNavigation={isDesktop}
           userLocation={userLocation}
+          showRoute={showRoute}
         />
       </div>
 
@@ -194,6 +196,21 @@ export function MapApp() {
           >
             <LocateFixed className="h-5 w-5" />
           </button>
+          {activeDay != null && (
+            <button
+              type="button"
+              onClick={() => setShowRoute((v) => !v)}
+              className={cn(
+                "fixed left-20 z-40 flex h-12 w-12 items-center justify-center rounded-full border bg-background shadow-lg transition-colors",
+                showRoute && "border-foreground bg-foreground text-background"
+              )}
+              style={{ bottom: "calc(var(--sheet-peek) + env(safe-area-inset-bottom) + 0.75rem)" }}
+              aria-label={showRoute ? "Hide route" : "Show route"}
+              aria-pressed={showRoute}
+            >
+              <Route className="h-5 w-5" />
+            </button>
+          )}
           <BottomSheet snap={snap} onSnapChange={setSnap} onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight}>
             {selectedPlaceId ? (
               <PlaceDetail placeId={selectedPlaceId} onBack={handleBack} />
