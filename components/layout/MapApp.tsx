@@ -17,6 +17,7 @@ import { FabReservations } from "@/components/layout/FabReservations";
 import { Button } from "@/components/ui/button";
 import { Ticket, LocateFixed } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { toast } from "sonner";
 import { useMediaQuery } from "@/lib/hooks/use-media-query";
 import { parseUrlState, serializeUrlState, type UrlState } from "@/lib/url-state";
 import { days } from "@/lib/data/itinerary";
@@ -58,7 +59,18 @@ export function MapApp() {
     setIsTracking(true);
     watchIdRef.current = navigator.geolocation.watchPosition(
       (pos) => setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-      () => setIsTracking(false),
+      (err) => {
+        setIsTracking(false);
+        if (err.code === 1 /* PERMISSION_DENIED */) {
+          toast.error("Location access denied", {
+            description: "Go to Settings → Safari → Location and allow access for this site.",
+          });
+        } else {
+          toast.error("Could not get your location", {
+            description: "Make sure Location Services are on and try again.",
+          });
+        }
+      },
       { enableHighAccuracy: true }
     );
   }, [isTracking]);
