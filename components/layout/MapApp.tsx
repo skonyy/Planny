@@ -104,16 +104,22 @@ export function MapApp() {
     [updateUrl]
   );
 
-  const maxDay = days[days.length - 1]?.number ?? 7;
-
   const handleSwipeLeft = useCallback(() => {
-    if (activeDay === null) handleDayChange(1);
-    else if (activeDay < maxDay) handleDayChange(activeDay + 1);
-  }, [activeDay, maxDay, handleDayChange]);
+    if (activeDay === null) {
+      const first = days[0];
+      if (first) handleDayChange(first.number);
+    } else {
+      const idx = days.findIndex((d) => d.number === activeDay);
+      const next = days[idx + 1];
+      if (next) handleDayChange(next.number);
+    }
+  }, [activeDay, handleDayChange]);
 
   const handleSwipeRight = useCallback(() => {
     if (activeDay === null) return;
-    handleDayChange(activeDay === 1 ? null : activeDay - 1);
+    const idx = days.findIndex((d) => d.number === activeDay);
+    if (idx <= 0) handleDayChange(null);
+    else handleDayChange(days[idx - 1].number);
   }, [activeDay, handleDayChange]);
 
   const [viewportH, setViewportH] = useState(0);
