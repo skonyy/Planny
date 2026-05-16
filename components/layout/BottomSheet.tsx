@@ -46,8 +46,9 @@ export function BottomSheet({
       if (animating.current || e.pointerType === "mouse") return;
       dragStart.current = { x: e.clientX, y: e.clientY };
       gestureDir.current = null;
-      // Capture so we keep receiving events even if pointer leaves the element
-      e.currentTarget.setPointerCapture(e.pointerId);
+      // No setPointerCapture — letting the browser keep natural event routing so
+      // the inner scroll container handles vertical scroll natively, and vaul can
+      // detect "this touch is on a scrollable element" before deciding to drag the sheet.
       const el = contentRef.current;
       if (el) el.style.transition = "none";
     },
@@ -69,8 +70,7 @@ export function BottomSheet({
         gestureDir.current = Math.abs(dx) > Math.abs(dy) ? "horizontal" : "vertical";
 
         if (gestureDir.current === "vertical") {
-          // Release capture — let vaul handle snap-point dragging normally
-          e.currentTarget.releasePointerCapture(e.pointerId);
+          // Vertical — bail out entirely, let vaul and the browser handle it
           dragStart.current = null;
           return;
         }
