@@ -70,6 +70,7 @@
       "description": "5-minute walk from the hotel. Easy first taste of hawker culture. Try bak kut teh near the back, soon kueh, chwee kueh, and tau suan for dessert.",
       "pregnancyNotes": "Bak kut teh is peppery pork rib soup, fully cooked and comforting. All recommended dishes here are fully cooked.",
       "googleRating": 4.1,
+      "transit": { "mode": "walk", "duration": 5 },
       "tips": [
         "Closed Thursdays — fine for Saturday arrival night.",
         "Use a tissue packet to reserve a seat — local custom."
@@ -85,6 +86,7 @@
       "lng": 103.8593,
       "description": "Gentle post-dinner stroll. Sultan Mosque lit up beautifully at night, then murals, lanterns, and shophouses along Arab Street and Haji Lane.",
       "googleRating": 4.5,
+      "transit": { "mode": "walk", "duration": 10 },
       "tips": [
         "Stop at Maison Ikkoku or any Haji Lane café for a mocktail / fresh juice.",
         "Back to hotel by 9:30pm — first night."
@@ -112,6 +114,7 @@
       "lng": 103.8485,
       "description": "12-min walk from the hotel. The History Gallery is air-conditioned, manageable, and sets context for the week.",
       "googleRating": 4.6,
+      "transit": { "mode": "walk", "duration": 12 },
       "tips": ["Great rainy-day backup if today's plan shifts."]
     },
     {
@@ -126,6 +129,7 @@
       "lng": 103.8638,
       "description": "Cool, AC, magical. Hit this first — Tulipmania closes today. MRT Downtown Line: Bencoolen → Bayfront, 10 min.",
       "googleRating": 4.6,
+      "transit": { "mode": "mrt", "duration": 10, "line": "DTL" },
       "reservation": {
         "required": true,
         "deadline": "2026-05-17",
@@ -145,8 +149,9 @@
       "lat": 1.2848,
       "lng": 103.8639,
       "description": "Mist, AC, the Jurassic World exhibition, indoor waterfall. Second stop after Flower Dome.",
-      "tips": ["Take an AC rest break on the benches between domes."],
-      "googleRating": 4.6
+      "googleRating": 4.6,
+      "transit": { "mode": "walk", "duration": 3 },
+      "tips": ["Take an AC rest break on the benches between domes."]
     },
     {
       "id": "supertree-grove",
@@ -158,6 +163,7 @@
       "lng": 103.8636,
       "description": "Observatory at sunset (~6:45pm). Stay for Garden Rhapsody at 7:45 or 8:45pm — free 10-min synchronised light & music show. Sit on the grass at OCBC Garden Plaza.",
       "googleRating": 4.7,
+      "transit": { "mode": "walk", "duration": 5 },
       "tips": ["Garden Rhapsody runs nightly, no booking."]
     },
     {
@@ -170,7 +176,8 @@
       "lng": 103.8653,
       "description": "Hawker centre inside the Gardens. Chicken satay, Hainanese chicken rice, sugar cane juice — fully cooked, casual, perfect timing before Rhapsody.",
       "pregnancyNotes": "Satay is well-grilled, safe. Skip any oyster omelette or rojak stalls.",
-      "googleRating": 4.0
+      "googleRating": 4.0,
+      "transit": { "mode": "walk", "duration": 5 }
     },
     {
       "id": "ya-kun-bugis",
@@ -194,6 +201,7 @@
       "lng": 103.8451,
       "description": "Singapore's oldest Hindu temple — the colourful gopuram on South Bridge Road. 244 South Bridge Rd.",
       "googleRating": 4.4,
+      "transit": { "mode": "grab", "duration": 15 },
       "tips": ["Shoes off at the entrance."]
     },
     {
@@ -206,6 +214,7 @@
       "lng": 103.8443,
       "description": "Striking red-and-gold temple with a free rooftop garden. Slow walk through Pagoda St and Smith St to get here.",
       "googleRating": 4.5,
+      "transit": { "mode": "walk", "duration": 3 },
       "tips": ["Rooftop garden has a cool, quiet vibe — quick AC-free breather."]
     },
     {
@@ -218,7 +227,8 @@
       "lng": 103.8444,
       "description": "7-min walk from the temples. Pregnancy-friendly hit list: Ah Tai Hainanese Chicken Rice (#01-07, ex-Tian Tian, shorter queue), Marina South Delicious fried carrot cake (cooked egg), Lao Ban soya beancurd for dessert.",
       "pregnancyNotes": "Ah Tai's chicken is poached then chilled — fully cooked. Skip any oyster omelette and rojak stalls.",
-      "googleRating": 4.0
+      "googleRating": 4.0,
+      "transit": { "mode": "walk", "duration": 5 }
     },
     {
       "id": "thian-hock-keng",
@@ -230,6 +240,7 @@
       "lng": 103.8473,
       "description": "Old Hokkien temple on Telok Ayer St. Stroll continues along Amoy Street and Ann Siang Hill — restored shophouses, café-lined lanes.",
       "googleRating": 4.0,
+      "transit": { "mode": "walk", "duration": 12 },
       "tips": ["Quick Grab here from the hotel after the nap."]
     },
     {
@@ -242,7 +253,8 @@
       "lng": 103.8504,
       "description": "Victorian cast-iron market. Walk the indoor stalls first, then head to Satay Street (Boon Tat St) at 7pm when the grills fire up. Stalls 7 & 8 are the famous ones.",
       "pregnancyNotes": "Chicken & beef satay, nasi lemak, sugar cane juice — all well-cooked, safe.",
-      "googleRating": 4.3
+      "googleRating": 4.3,
+      "transit": { "mode": "walk", "duration": 8 }
     },
     {
       "id": "mbs-spectra",
@@ -254,6 +266,7 @@
       "lng": 103.8592,
       "description": "Free light & water show off MBS Event Plaza, nightly at 8pm and 9pm. Watch from the Helix Bridge or the boardwalk in front of the Merlion for the best reflection.",
       "googleRating": 4.4,
+      "transit": { "mode": "walk", "duration": 15 },
       "tips": ["15 min walk from Lau Pa Sat, or 5 min Grab."]
     },
     {
@@ -266,6 +279,7 @@
       "lng": 103.8543,
       "description": "Classic skyline shot across to MBS. Visit en route to / after Spectra.",
       "googleRating": 4.6,
+      "transit": { "mode": "walk", "duration": 5 },
       "tips": ["Crowded — go to the lower platform for clearer water-level photos."]
     },
     {
@@ -290,7 +304,8 @@
       "lng": 103.8500,
       "description": "Little India's wet market downstairs, food court upstairs. South Indian thosai, biryani, roti prata with chicken curry, sweet lassi.",
       "pregnancyNotes": "Skip the rojak (raw veg/fruit). Sweet lassi over kopi if you've already had your caffeine cap.",
-      "googleRating": 4.0
+      "googleRating": 4.0,
+      "transit": { "mode": "walk", "duration": 12 }
     },
     {
       "id": "veeramakaliamman",
@@ -301,7 +316,8 @@
       "lat": 1.3094,
       "lng": 103.8505,
       "description": "One of Singapore's oldest Hindu temples, dedicated to Kali. 141 Serangoon Rd — 5 min walk from Tekka.",
-      "googleRating": 4.5
+      "googleRating": 4.5,
+      "transit": { "mode": "walk", "duration": 5 }
     },
     {
       "id": "tan-teng-niah",
@@ -313,6 +329,7 @@
       "lng": 103.8519,
       "description": "The rainbow shophouse — your Little India photo stop. 37 Kerbau Rd.",
       "googleRating": 4.4,
+      "transit": { "mode": "walk", "duration": 3 },
       "tips": ["Pair with Sri Veeramakaliamman + Tekka in one loop."]
     },
     {
@@ -325,7 +342,8 @@
       "lng": 103.8593,
       "description": "Open since 1908. Legendary murtabak — chicken or mutton stuffed flatbread, griddled to order. 697-699 North Bridge Rd.",
       "pregnancyNotes": "Murtabak filling is fully cooked. Safe.",
-      "googleRating": 4.2
+      "googleRating": 4.2,
+      "transit": { "mode": "walk", "duration": 12 }
     },
     {
       "id": "hjh-maimunah",
@@ -349,6 +367,7 @@
       "lng": 103.8584,
       "description": "Rooftop with tepee-style seating, 360° view over Kampong Glam and Bugis. Calm vibe, good mocktail menu.",
       "googleRating": 4.4,
+      "transit": { "mode": "walk", "duration": 8 },
       "tips": ["10-min walk from the hotel. Reservations recommended on weekends, walk-in fine on Tue."]
     },
     {
@@ -373,6 +392,7 @@
       "lng": 103.8520,
       "description": "Best Southeast Asian art collection in the world, set in the old Supreme Court + City Hall. Heavily AC. 2–3 hours easy. Casual lunch options on B1.",
       "googleRating": 4.5,
+      "transit": { "mode": "grab", "duration": 10 },
       "tips": ["5 min walk from the hotel.", "Free for Singapore residents; ticketed for tourists."]
     },
     {
@@ -385,6 +405,7 @@
       "lng": 103.8556,
       "description": "Free, take the lift up Esplanade Mall. Sweeping view of Marina Bay, much less crowded than MBS, perfect golden hour before Violet Oon.",
       "googleRating": 4.6,
+      "transit": { "mode": "walk", "duration": 8 },
       "tips": ["Plan to be up here by 6:30pm."]
     },
     {
@@ -398,6 +419,7 @@
       "description": "Modern Peranakan in a stunning heritage room inside the National Gallery. Try beef rendang, kueh pie tee, dry laksa.",
       "pregnancyNotes": "Everything well-cooked. Skip raw chilli sambal on the side if she prefers.",
       "googleRating": 4.0,
+      "transit": { "mode": "walk", "duration": 5 },
       "reservation": {
         "required": true,
         "deadline": "2026-05-18",
@@ -416,6 +438,7 @@
       "lng": 103.8520,
       "description": "Rooftop bar on top of the National Gallery. View straight across the Padang to MBS — one of the city's best. Solid non-alcoholic menu.",
       "googleRating": 4.3,
+      "transit": { "mode": "walk", "duration": 2 },
       "tips": ["Walk-in usually fine on a weeknight."]
     },
     {
@@ -440,6 +463,7 @@
       "lng": 103.8160,
       "description": "UNESCO-listed. Walk the Healing Garden and Swan Lake — flat, shaded, quiet. MRT to Botanic Gardens station.",
       "googleRating": 4.8,
+      "transit": { "mode": "mrt", "duration": 15, "line": "DTL" },
       "tips": ["Bring water — shaded but humid."]
     },
     {
@@ -452,6 +476,7 @@
       "lng": 103.8158,
       "description": "Paid section inside Botanic — absolutely worth it. The VIP Orchid section is air-conditioned for a heat break.",
       "googleRating": 4.6,
+      "transit": { "mode": "walk", "duration": 5 },
       "tips": ["~SGD $15 entry. Pay at the gate."]
     },
     {
@@ -464,6 +489,7 @@
       "lng": 103.8108,
       "description": "Garden setting in Dempsey Hill, lighter Western menu, gorgeous space. 10-min Grab from Botanic.",
       "googleRating": 4.2,
+      "transit": { "mode": "grab", "duration": 10 },
       "tips": ["Open Farm Community next door is the alternative if PS is full."]
     },
     {
@@ -476,6 +502,7 @@
       "lng": 103.8318,
       "description": "AC mall central. Browse, rest, refresh between Dempsey and Clarke Quay. Takashimaya and Paragon are next door.",
       "googleRating": 4.5,
+      "transit": { "mode": "grab", "duration": 10 },
       "tips": ["Food hall in the basement is decent if you want a snack."]
     },
     {
@@ -488,6 +515,7 @@
       "lng": 103.8463,
       "description": "40-min bumboat ride from Clarke Quay jetty at sunset. Passes Cavenagh Bridge, Merlion, Fullerton, MBS. Seated and scenic — perfect for a pregnant traveller.",
       "googleRating": 4.2,
+      "transit": { "mode": "mrt", "duration": 12, "line": "NEL" },
       "reservation": {
         "required": true,
         "deadline": "2026-05-20",
@@ -506,7 +534,8 @@
       "lng": 103.8444,
       "description": "Where the cruise drops you. Chilli crab and black pepper crab — a must-try, fully cooked.",
       "pregnancyNotes": "Skip the cockles / clam sides. Crab is fine.",
-      "googleRating": 4.0
+      "googleRating": 4.0,
+      "transit": { "mode": "walk", "duration": 3 }
     },
     {
       "id": "chin-mee-chin",
@@ -530,6 +559,7 @@
       "lng": 103.9026,
       "description": "The pastel Peranakan shophouse row — your photo stop. Slow walk down Joo Chiat Rd for tile murals; browse Rumah Bebe.",
       "googleRating": 4.4,
+      "transit": { "mode": "walk", "duration": 8 },
       "tips": ["Best light before 11am."]
     },
     {
@@ -542,7 +572,8 @@
       "lng": 103.9032,
       "description": "THE laksa. Noodles cut short so you eat with a spoon. Add an otah on the side. 51 East Coast Rd.",
       "pregnancyNotes": "Order \"no cockles, please\" — that's the only risky element. Prawns and fishcake are fully cooked and fine.",
-      "googleRating": 4.1
+      "googleRating": 4.1,
+      "transit": { "mode": "walk", "duration": 5 }
     },
     {
       "id": "jewel-changi",
@@ -554,6 +585,7 @@
       "lng": 103.9893,
       "description": "Arrive by 4–5pm with bags stored. Stand under the Rain Vortex (free, hourly). Canopy Park on L5 (booked). Shiseido Forest Valley for the indoor garden walk.",
       "googleRating": 4.7,
+      "transit": { "mode": "grab", "duration": 20 },
       "tips": [
         "Rain Vortex Light & Sound Show at 8pm and 9pm — perfect last-Singapore moment.",
         "Dinner at the basement food court: Five Star Hainanese, Tim Ho Wan, Burger & Lobster."
@@ -576,6 +608,7 @@
       "lng": 103.9915,
       "description": "Near-midnight flight home. Changi immigration is famously fast — 5 min even at peak.",
       "googleRating": 4.6,
+      "transit": { "mode": "walk", "duration": 5 },
       "tips": [
         "Store luggage at T1 or T3 left-luggage counters (~SGD $14/bag/24h) from 3pm onwards.",
         "Connected to Jewel by walkway / Skytrain — no Grab needed once at the airport."

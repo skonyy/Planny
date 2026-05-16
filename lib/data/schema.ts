@@ -17,6 +17,12 @@ const timeOfDay = z.enum([
   "night",
 ]);
 
+const placeTransit = z.object({
+  mode: z.enum(["walk", "mrt", "grab", "bus"]),
+  duration: z.number().int().positive().optional(),
+  line: z.string().optional(),
+});
+
 const reservation = z.object({
   required: z.boolean(),
   deadline: z.string().optional(),
@@ -46,6 +52,7 @@ const place = z
     tips: z.array(z.string()).optional(),
     reservation: reservation.optional(),
     googleRating: z.number().min(0).max(5).optional(),
+    transit: placeTransit.optional(),
   })
   .refine(
     (p) => !(p.startTime && p.endTime) || p.endTime > p.startTime,

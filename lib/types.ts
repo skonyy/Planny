@@ -21,6 +21,12 @@ export interface Reservation {
   notes?: string;
 }
 
+export interface PlaceTransit {
+  mode: "walk" | "mrt" | "grab" | "bus";
+  duration?: number;  // minutes
+  line?: string;      // e.g. "DTL", "CCL", "EWL", "NEL", "NSL"
+}
+
 export interface Place {
   id: string;
   name: string;
@@ -36,6 +42,7 @@ export interface Place {
   tips?: string[];
   reservation?: Reservation;
   googleRating?: number;
+  transit?: PlaceTransit;  // how to get here from the previous place on the same day
 }
 
 export interface Day {

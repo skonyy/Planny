@@ -32,6 +32,12 @@ export interface Reservation {
   notes?: string
 }
 
+export interface PlaceTransit {
+  mode: 'walk' | 'mrt' | 'grab' | 'bus'
+  duration?: number         // minutes
+  line?: string             // MRT line code: "DTL", "CCL", "EWL", "NEL", "NSL"
+}
+
 export interface Place {
   id: string                // slug, URL-safe. Used in ?placeId=
   name: string
@@ -47,6 +53,7 @@ export interface Place {
   tips?: string[]           // bullet points
   reservation?: Reservation
   googleRating?: number     // 0.0–5.0, from Google Maps
+  transit?: PlaceTransit    // how to get here from the previous place on the same day
 }
 
 export interface Day {
