@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef } from "react";
 import Map, {
   Marker,
   NavigationControl,
+  GeolocateControl,
   type MapRef,
 } from "react-map-gl/maplibre";
 import { places } from "@/lib/data/itinerary";
@@ -22,6 +23,7 @@ interface MapViewProps {
   selectedPlaceId: string | null;
   onSelectPlace: (id: string) => void;
   bottomPadding?: number;
+  showNavigation?: boolean;
 }
 
 export function MapView({
@@ -29,6 +31,7 @@ export function MapView({
   selectedPlaceId,
   onSelectPlace,
   bottomPadding = 200,
+  showNavigation = true,
 }: MapViewProps) {
   const mapRef = useRef<MapRef>(null);
 
@@ -89,7 +92,12 @@ export function MapView({
       reuseMaps
       style={{ width: "100%", height: "100%" }}
     >
-      <NavigationControl position="top-right" showCompass={false} />
+      {showNavigation && <NavigationControl position="top-right" showCompass={false} />}
+      <GeolocateControl
+        position="bottom-left"
+        trackUserLocation
+        showAccuracyCircle
+      />
       {visible.map((place) => (
         <Marker
           key={place.id}
