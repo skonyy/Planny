@@ -62,14 +62,12 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       if (dayPlaces.length === 0) return;
       const lngs = dayPlaces.map((p) => p.lng);
       const lats = dayPlaces.map((p) => p.lat);
-      const pad = { top: 80, bottom: padding, left: 40, right: 40 };
       const cam = map.cameraForBounds(
         [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
-        { padding: pad, maxZoom: 13 }
+        { padding: { top: 80, bottom: padding, left: 40, right: 40 }, maxZoom: 13 }
       );
       if (!cam) return;
-      map.stop();
-      map.flyTo({ center: cam.center, zoom: cam.zoom, duration: 700, padding: pad });
+      map.flyTo({ center: cam.center, zoom: cam.zoom, duration: 700 });
     },
   }), []);
   const [routeLineColor, setRouteLineColor] = useState("#454545");
@@ -126,17 +124,15 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
     if (dayPlaces.length === 0) return;
     const lngs = dayPlaces.map((p) => p.lng);
     const lats = dayPlaces.map((p) => p.lat);
-    const pad = { top: 80, bottom: bottomPadding, left: 40, right: 40 };
     const cam = map.cameraForBounds(
       [
         [Math.min(...lngs), Math.min(...lats)],
         [Math.max(...lngs), Math.max(...lats)],
       ],
-      { padding: pad, maxZoom: 13 }
+      { padding: { top: 80, bottom: bottomPadding, left: 40, right: 40 }, maxZoom: 13 }
     );
     if (!cam) return;
-    map.stop();
-    map.flyTo({ center: cam.center, zoom: cam.zoom, duration: 700, padding: pad });
+    map.flyTo({ center: cam.center, zoom: cam.zoom, duration: 700 });
   }, [activeDay, selectedPlaceId, bottomPadding]);
 
   // Fly to user location on first fix; reset when tracking stops
