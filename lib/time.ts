@@ -1,6 +1,14 @@
 import type { Day, Place } from "@/lib/types";
 import { TIME_OF_DAY_ORDER } from "@/lib/types";
 
+const TIME_OF_DAY_MINUTES: Record<string, number> = {
+  morning: 9 * 60,
+  midday: 12 * 60,
+  afternoon: 14 * 60,
+  evening: 18 * 60,
+  night: 21 * 60,
+};
+
 export function parseHHmm(hhmm: string): number {
   const [h, m] = hhmm.split(":").map(Number);
   return h * 60 + m;
@@ -27,9 +35,9 @@ export function placeDateTime(day: Day, hhmm: string): Date {
 export function sortPlacesByTime(places: Place[]): Place[] {
   return places.slice().sort((a, b) => {
     if (a.day !== b.day) return a.day - b.day;
-    if (a.startTime && b.startTime) return parseHHmm(a.startTime) - parseHHmm(b.startTime);
-    if (a.startTime) return -1;
-    if (b.startTime) return 1;
+    const aMin = a.startTime ? parseHHmm(a.startTime) : TIME_OF_DAY_MINUTES[a.timeOfDay];
+    const bMin = b.startTime ? parseHHmm(b.startTime) : TIME_OF_DAY_MINUTES[b.timeOfDay];
+    if (aMin !== bMin) return aMin - bMin;
     return TIME_OF_DAY_ORDER[a.timeOfDay] - TIME_OF_DAY_ORDER[b.timeOfDay];
   });
 }

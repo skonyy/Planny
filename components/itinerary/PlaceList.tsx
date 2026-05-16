@@ -79,7 +79,7 @@ export function PlaceList({
                       )}
                     </span>
                     <span className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                      <span className="capitalize tabular-nums">
+                      <span className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 font-medium capitalize tabular-nums text-foreground/75">
                         {place.startTime && place.endTime
                           ? `${formatTimeRange(place.startTime, place.endTime)} · ${formatDuration(parseHHmm(place.endTime) - parseHHmm(place.startTime))}`
                           : place.timeOfDay}
