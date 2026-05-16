@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef } from "react";
 import Map, {
   Marker,
   NavigationControl,
+  GeolocateControl,
   type MapRef,
 } from "react-map-gl/maplibre";
 import { places } from "@/lib/data/itinerary";
@@ -23,7 +24,6 @@ interface MapViewProps {
   onSelectPlace: (id: string) => void;
   bottomPadding?: number;
   showNavigation?: boolean;
-  userLocation?: { lat: number; lng: number } | null;
 }
 
 export function MapView({
@@ -32,10 +32,8 @@ export function MapView({
   onSelectPlace,
   bottomPadding = 200,
   showNavigation = true,
-  userLocation,
 }: MapViewProps) {
   const mapRef = useRef<MapRef>(null);
-  const hasFlownToUser = useRef(false);
 
   const visible = useMemo(
     () => (activeDay == null ? places : places.filter((p) => p.day === activeDay)),
@@ -85,24 +83,6 @@ export function MapView({
     );
   }, [activeDay, selectedPlaceId, bottomPadding]);
 
-  // Fly to user location on first fix
-  useEffect(() => {
-    if (!userLocation || hasFlownToUser.current) return;
-    const map = mapRef.current;
-    if (!map) return;
-    hasFlownToUser.current = true;
-    map.flyTo({
-      center: [userLocation.lng, userLocation.lat],
-      zoom: 15,
-      duration: 700,
-    });
-  }, [userLocation]);
-
-  // Reset fly flag when tracking is stopped
-  useEffect(() => {
-    if (!userLocation) hasFlownToUser.current = false;
-  }, [userLocation]);
-
   return (
     <Map
       ref={mapRef}
@@ -113,11 +93,7 @@ export function MapView({
       style={{ width: "100%", height: "100%" }}
     >
       {showNavigation && <NavigationControl position="top-right" showCompass={false} />}
-      {userLocation && (
-        <Marker longitude={userLocation.lng} latitude={userLocation.lat} anchor="center">
-          <div className="h-4 w-4 rounded-full bg-blue-500 border-2 border-white shadow-md ring-4 ring-blue-500/30" />
-        </Marker>
-      )}
+      <GeolocateControl position="top-right" trackUserLocation showAccuracyCircle />
       {visible.map((place) => (
         <Marker
           key={place.id}

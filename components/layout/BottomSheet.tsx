@@ -157,7 +157,7 @@ export function BottomSheet({
         <Vaul.Content
           data-slot="bottom-sheet"
           className={cn(
-            "fixed inset-x-0 bottom-0 z-30 flex h-full max-h-[100dvh] flex-col overflow-x-hidden rounded-t-xl border-t bg-background text-foreground shadow-2xl outline-none",
+            "fixed inset-x-0 bottom-0 z-30 flex h-full max-h-[100dvh] flex-col rounded-t-xl border-t bg-background text-foreground shadow-2xl outline-none",
             className
           )}
           style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
@@ -167,16 +167,24 @@ export function BottomSheet({
           <Vaul.Description className="sr-only">
             Singapore week — places by day with reservations and tips.
           </Vaul.Description>
+          {/* Handle sits outside the animated area so it never moves during swipes */}
           <div className="mx-auto my-2 h-1.5 w-12 shrink-0 rounded-full bg-muted" />
-          <div
-            ref={contentRef}
-            className="flex min-h-0 flex-1 flex-col"
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerCancel={handlePointerCancel}
-          >
-            {children}
+          {/*
+            overflow:clip clips translated content without creating a scroll
+            container (unlike overflow:hidden which sets implicit overflow-y:auto
+            and causes a double-scroll bug).
+          */}
+          <div className="flex min-h-0 flex-1 flex-col [overflow:clip]">
+            <div
+              ref={contentRef}
+              className="flex min-h-0 flex-1 flex-col"
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerCancel}
+            >
+              {children}
+            </div>
           </div>
         </Vaul.Content>
       </Vaul.Portal>
