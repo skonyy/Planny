@@ -16,7 +16,7 @@
       "number": 4,
       "date": "2026-05-19",
       "title": "Gardens by the Bay — the big one",
-      "summary": "Toast Box + Sultan Mosque morning, Hjh Maimunah nasi padang, then Flower Dome / Cloud Forest / Botero / Garden Rhapsody."
+      "summary": "Symmetry breakfast + Sultan Mosque morning, Hjh Maimunah nasi padang, then Flower Dome / Cloud Forest / Botero / Garden Rhapsody."
     },
     {
       "number": 5,
@@ -28,7 +28,7 @@
       "number": 6,
       "date": "2026-05-21",
       "title": "Chinatown · bumboat · tomato hotpot",
-      "summary": "Oh Wunder brunch, Chinatown temples + shophouses, Maxwell, river cruise at sunset, XiaoYanZhi hotpot."
+      "summary": "//waterloo.coffee + SKOSH light breakfast, Chinatown temples + shophouses, Maxwell, river cruise at sunset, XiaoYanZhi hotpot."
     },
     {
       "number": 7,
@@ -146,21 +146,21 @@
       }
     },
     {
-      "id": "antler-ember",
-      "name": "Antler & Ember (hotel restaurant)",
+      "id": "twenty-eight-cafe-d3",
+      "name": "Twenty Eight Cafe breakfast",
       "category": "restaurant",
       "day": 3,
       "timeOfDay": "morning",
-      "startTime": "07:30",
-      "endTime": "08:30",
-      "lat": 1.2993,
-      "lng": 103.8516,
-      "description": "Hotel restaurant at 78 Waterloo St. Breakfast buffet with hot dishes, pastries, fruits. Early start to catch CapitaSpring walk-ins.",
-      "pregnancyNotes": "Ask for hard-boiled eggs if runny options are on the buffet.",
-      "googleRating": 4.9,
+      "startTime": "08:30",
+      "endTime": "09:45",
+      "lat": 1.3021,
+      "lng": 103.8488,
+      "description": "Acclaimed avocado toast on sourdough with pomegranate, pine nuts, poached egg — at 28 Wilkie Rd #01-02. Shakshouka, smoothies, eggs benedict, Big Breakfast. One of the best healthy brunch spots near Bugis. Quiet chill vibe, jazz music.",
+      "pregnancyNotes": "Order poached egg WELL-DONE (no runny yolk), or scrambled. Shakshouka eggs ask for fully cooked. Smoothies all safe.",
+      "googleRating": 4.3,
       "transit": {
         "mode": "walk",
-        "duration": 1
+        "duration": 5
       }
     },
     {
@@ -169,8 +169,8 @@
       "category": "view",
       "day": 3,
       "timeOfDay": "morning",
-      "startTime": "08:30",
-      "endTime": "10:00",
+      "startTime": "10:00",
+      "endTime": "11:00",
       "lat": 1.2854,
       "lng": 103.8499,
       "description": "360° city view from the 51st-floor rooftop urban farm at 88 Market St. SGD 10 walk-in with a drink voucher. Arrive by 8:25am for best chance at walk-ins. Backup: Green Oasis at levels 17–20.",
@@ -191,8 +191,8 @@
       "category": "attraction",
       "day": 3,
       "timeOfDay": "midday",
-      "startTime": "10:30",
-      "endTime": "11:30",
+      "startTime": "11:00",
+      "endTime": "12:00",
       "lat": 1.2973,
       "lng": 103.8463,
       "description": "Tree Tunnel spiral staircase (the photo spot), Spice Garden, Sundial Garden, ASEAN Sculpture Park. Flat shaded paths.",
@@ -209,8 +209,8 @@
       "category": "attraction",
       "day": 3,
       "timeOfDay": "midday",
-      "startTime": "11:30",
-      "endTime": "13:00",
+      "startTime": "12:00",
+      "endTime": "13:30",
       "lat": 1.2966,
       "lng": 103.8485,
       "description": "Heavily air-conditioned. The History Gallery gives the best trip context. Adults SGD 15. 5 min downhill from Fort Canning.",
@@ -227,7 +227,7 @@
       "category": "restaurant",
       "day": 3,
       "timeOfDay": "midday",
-      "startTime": "13:00",
+      "startTime": "13:30",
       "endTime": "14:30",
       "lat": 1.2912,
       "lng": 103.8497,
@@ -310,18 +310,18 @@
       }
     },
     {
-      "id": "toast-box-bugis",
-      "name": "Toast Box, Bugis Junction",
+      "id": "symmetry-breakfast",
+      "name": "Symmetry breakfast",
       "category": "restaurant",
       "day": 4,
       "timeOfDay": "morning",
-      "startTime": "09:30",
+      "startTime": "09:00",
       "endTime": "10:30",
-      "lat": 1.2991,
-      "lng": 103.8559,
-      "description": "Reliable kaya toast chain at 200 Victoria St, Bugis Junction. Toast set, kopi. 8 min walk from hotel.",
-      "pregnancyNotes": "Ask for HARD-BOILED eggs — skip the half-boiled default.",
-      "googleRating": 4.1,
+      "lat": 1.3038,
+      "lng": 103.8592,
+      "description": "One of the best Big Breakfasts in Singapore — sourdough, avocado mash, scrambled eggs, Brussels sprouts, mushrooms, tomatoes, at 9 Jln Kubor #01-01. Also blueberry pancakes, eggs benedict, salads. Lush greenery interior, French windows, AC. Already on the path to Sultan Mosque / Kampong Glam.",
+      "pregnancyNotes": "Hard scrambled eggs by default, all cooked. Smoothies + fresh juices safe.",
+      "googleRating": 4.3,
       "transit": {
         "mode": "walk",
         "duration": 8
@@ -463,21 +463,21 @@
       }
     },
     {
-      "id": "antler-ember-d5",
-      "name": "Antler & Ember (hotel restaurant)",
+      "id": "twenty-eight-cafe-d5",
+      "name": "Twenty Eight Cafe breakfast",
       "category": "restaurant",
       "day": 5,
       "timeOfDay": "morning",
-      "startTime": "09:00",
-      "endTime": "10:00",
-      "lat": 1.2993,
-      "lng": 103.8516,
-      "description": "Hotel restaurant breakfast before the Southern Ridges walk.",
-      "pregnancyNotes": "Ask for hard-boiled eggs.",
-      "googleRating": 4.9,
+      "startTime": "08:30",
+      "endTime": "09:45",
+      "lat": 1.3021,
+      "lng": 103.8488,
+      "description": "Return visit at 28 Wilkie Rd #01-02 — try a different dish (shakshouka, eggs benedict, kimchi beef rice bowl, mixed berries smoothie). Same great avocado toast available.",
+      "pregnancyNotes": "Order eggs well-done.",
+      "googleRating": 4.3,
       "transit": {
         "mode": "walk",
-        "duration": 1
+        "duration": 5
       }
     },
     {
@@ -611,21 +611,21 @@
       }
     },
     {
-      "id": "oh-wunder-cafe",
-      "name": "Oh Wunder Cafe",
+      "id": "waterloo-coffee-skosh",
+      "name": "//waterloo.coffee + SKOSH light breakfast",
       "category": "restaurant",
       "day": 6,
       "timeOfDay": "morning",
-      "startTime": "09:30",
-      "endTime": "10:30",
-      "lat": 1.2969,
-      "lng": 103.8536,
-      "description": "Sit-down brunch at 231 Bain St, #01-69 Bras Basah Complex. Mentaiko salmon spaghetti, steak & eggs, lemon tart, Wunderfolks pastries.",
-      "pregnancyNotes": "Order steak medium-well; no runny eggs.",
-      "googleRating": 4.5,
+      "startTime": "09:00",
+      "endTime": "10:00",
+      "lat": 1.2984,
+      "lng": 103.8522,
+      "description": "Specialty coffee + canned matcha at //waterloo.coffee (261 Waterloo St #01-22), then walk 2 min to SKOSH Cafe next door for Japanese onigiri or sando. Light start since Maxwell lunch is the day's food highlight.",
+      "pregnancyNotes": "Skip raw fish onigiri fillings — choose cooked ones (chicken katsu, salmon teriyaki, ume). Matcha fine in moderation.",
+      "googleRating": 4.7,
       "transit": {
         "mode": "walk",
-        "duration": 5
+        "duration": 2
       }
     },
     {
