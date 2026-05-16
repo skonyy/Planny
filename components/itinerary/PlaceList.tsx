@@ -42,7 +42,7 @@ export function PlaceList({
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="px-4 pb-2 pt-1">
+      <div className="px-5 pb-3 pt-1">
         <div className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
           {activeDayMeta
             ? formatDate(activeDayMeta.date)
@@ -50,13 +50,13 @@ export function PlaceList({
           · {visible.length} {visible.length === 1 ? "place" : "places"}
         </div>
         {activeDayMeta && (
-          <h2 className="mt-0.5 text-base font-semibold text-foreground">
+          <h2 className="mt-1 text-xl font-bold leading-tight tracking-tight text-foreground">
             {activeDayMeta.title}
           </h2>
         )}
       </div>
       <div ref={scrollRef} className={cn("min-h-0 flex-1 px-4 pb-[20vh]", lockScroll ? "overflow-hidden" : "overflow-y-auto")}>
-        <ul className="flex flex-col">
+        <ul className="flex flex-col gap-1">
           {visible.map((place, idx) => {
             const { icon: Icon, bgClass } = markerStyle(place.category);
             const selected = place.id === selectedPlaceId;
@@ -69,13 +69,13 @@ export function PlaceList({
                     type="button"
                     onClick={() => onSelectPlace(place.id)}
                     className={cn(
-                      "flex w-full items-start gap-3 rounded-lg border border-transparent p-2 text-left transition-colors hover:bg-muted/60",
-                      selected && "border-border bg-muted/80"
+                      "flex w-full items-start gap-3 rounded-2xl border border-transparent p-3 text-left transition-colors hover:bg-card",
+                      selected && "border-foreground/10 bg-card",
                     )}
                   >
                     <span
                       className={cn(
-                        "mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white",
+                        "mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-white shadow-[0_1px_3px_rgba(0,0,0,0.12)]",
                         bgClass
                       )}
                     >
@@ -83,7 +83,7 @@ export function PlaceList({
                     </span>
                     <span className="flex min-w-0 flex-1 flex-col">
                       <span className="flex items-center gap-2">
-                        <span className="truncate text-sm font-medium text-foreground">
+                        <span className="truncate text-[15px] font-semibold text-foreground">
                           {place.name}
                         </span>
                         {place.reservation?.required && (
@@ -93,8 +93,8 @@ export function PlaceList({
                           />
                         )}
                       </span>
-                      <span className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                        <span className="inline-flex items-center rounded-full bg-muted px-2 py-0.5 font-medium capitalize tabular-nums text-foreground/75">
+                      <span className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
+                        <span className="inline-flex items-center rounded-full bg-card px-2 py-0.5 font-medium capitalize tabular-nums text-foreground/75">
                           {place.startTime && place.endTime
                             ? formatTimeRange(place.startTime, place.endTime)
                             : place.timeOfDay}

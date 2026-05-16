@@ -77,7 +77,7 @@ export function ReservationsDialog({
                       </span>
                       {r.deadline && (
                         <Badge
-                          variant={overdue ? "destructive" : "secondary"}
+                          variant={overdue ? "destructive" : "confirmed"}
                           className="shrink-0"
                         >
                           {overdue ? "Overdue" : "By " + formatShort(r.deadline)}

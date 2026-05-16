@@ -36,6 +36,7 @@ export function DayPills({ activeDay, onChange, className }: DayPillsProps) {
         <Pill
           key={d.number}
           active={activeDay === d.number}
+          today={d.date === today}
           past={d.date < today}
           onClick={() => onChange(d.number)}
         >
@@ -49,11 +50,13 @@ export function DayPills({ activeDay, onChange, className }: DayPillsProps) {
 
 function Pill({
   active,
+  today,
   past,
   onClick,
   children,
 }: {
   active: boolean;
+  today?: boolean;
   past?: boolean;
   onClick: () => void;
   children: React.ReactNode;
@@ -63,14 +66,20 @@ function Pill({
       type="button"
       onClick={onClick}
       className={cn(
-        "shrink-0 snap-start rounded-full border px-4 py-1.5 text-sm transition-colors",
+        "relative shrink-0 snap-start rounded-full px-4 py-2 text-sm transition-colors",
         active
-          ? "border-foreground bg-foreground text-background"
-          : "border-border bg-background text-muted-foreground hover:text-foreground",
-        past && !active && "opacity-50",
+          ? "bg-foreground text-background"
+          : "bg-card text-muted-foreground hover:text-foreground",
+        past && !active && "opacity-55",
       )}
     >
       {children}
+      {today && !active && (
+        <span
+          aria-hidden
+          className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-accent-coral"
+        />
+      )}
     </button>
   );
 }

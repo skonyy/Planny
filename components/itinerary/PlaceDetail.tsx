@@ -75,22 +75,22 @@ export function PlaceDetail({ placeId, onBack, lockScroll = false }: PlaceDetail
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex items-center px-4 pt-2 pb-5">
-        <Button variant="ghost" size="sm" onClick={onBack} className="-ml-1">
+      <div className="flex items-center px-4 pt-3 pb-4">
+        <Button variant="outline" size="sm" onClick={onBack} className="gap-1.5">
           <ArrowLeft className="h-4 w-4" />
           Back
         </Button>
       </div>
-      <div ref={scrollRef} className={`min-h-0 flex-1 px-4 pb-[20vh] ${lockScroll ? "overflow-hidden" : "overflow-y-auto"}`}>
+      <div ref={scrollRef} className={`min-h-0 flex-1 px-5 pb-[20vh] ${lockScroll ? "overflow-hidden" : "overflow-y-auto"}`}>
         <div className="flex items-start gap-3">
-          <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white ${bgClass}`}>
+          <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white shadow-[0_1px_3px_rgba(0,0,0,0.12)] ${bgClass}`}>
             <Icon className="h-5 w-5" strokeWidth={2.4} />
           </span>
-          <div className="flex min-w-0 flex-1 flex-col">
-            <h2 className="text-lg font-semibold leading-tight text-foreground">
+          <div className="flex min-w-0 flex-1 flex-col pt-0.5">
+            <h2 className="text-[26px] font-bold leading-[1.15] tracking-tight text-foreground">
               {place.name}
             </h2>
-            <div className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
+            <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
               <Badge variant="secondary" className="capitalize">{label}</Badge>
               <Badge variant="outline" className="font-normal capitalize">{place.timeOfDay}</Badge>
               {place.googleRating != null && (
@@ -108,7 +108,7 @@ export function PlaceDetail({ placeId, onBack, lockScroll = false }: PlaceDetail
           </div>
         </div>
 
-        <p className="mt-4 text-sm leading-relaxed text-foreground/90">
+        <p className="mt-5 text-[15px] leading-relaxed text-foreground/85">
           {place.description}
         </p>
 
@@ -133,8 +133,8 @@ export function PlaceDetail({ placeId, onBack, lockScroll = false }: PlaceDetail
         )}
 
         {place.reservation?.required && (
-          <div className="mt-5 rounded-lg border bg-muted/40 p-3">
-            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+          <div className="mt-5 rounded-2xl bg-card p-4">
+            <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
               <CalendarClock className="h-4 w-4" />
               Reservation needed
             </div>
@@ -220,8 +220,8 @@ function Schedule({
   const status = computeStatus(now, startAt, endAt);
 
   return (
-    <div className="mt-5 rounded-lg border bg-muted/40 p-3">
-      <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+    <div className="mt-5 rounded-2xl bg-card p-4">
+      <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
         <Clock className="h-4 w-4" />
         Planned {formatTimeRange(start, end)} · {duration}
       </div>

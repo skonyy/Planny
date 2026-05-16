@@ -62,9 +62,10 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       if (dayPlaces.length === 0) return;
       const lngs = dayPlaces.map((p) => p.lng);
       const lats = dayPlaces.map((p) => p.lat);
+      map.stop();
       map.fitBounds(
         [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
-        { padding: { top: 80, bottom: padding, left: 40, right: 40 }, duration: 700, maxZoom: 15 }
+        { padding: { top: 80, bottom: padding, left: 40, right: 40 }, duration: 700, maxZoom: 14 }
       );
     },
   }), []);
@@ -122,6 +123,7 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
     if (dayPlaces.length === 0) return;
     const lngs = dayPlaces.map((p) => p.lng);
     const lats = dayPlaces.map((p) => p.lat);
+    map.stop();
     map.fitBounds(
       [
         [Math.min(...lngs), Math.min(...lats)],
@@ -130,7 +132,7 @@ export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView(
       {
         padding: { top: 80, bottom: bottomPadding, left: 40, right: 40 },
         duration: 700,
-        maxZoom: 15,
+        maxZoom: 14,
       }
     );
   }, [activeDay, selectedPlaceId, bottomPadding]);

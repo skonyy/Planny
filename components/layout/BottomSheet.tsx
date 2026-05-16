@@ -165,7 +165,7 @@ export const BottomSheet = React.forwardRef<BottomSheetHandle, BottomSheetProps>
           <Vaul.Content
             data-slot="bottom-sheet"
             className={cn(
-              "fixed inset-x-0 bottom-0 z-30 flex h-full max-h-[100dvh] flex-col rounded-t-xl border-t bg-background text-foreground shadow-2xl outline-none",
+              "fixed inset-x-0 bottom-0 z-30 flex h-full max-h-[100dvh] flex-col rounded-t-[1.5rem] bg-background text-foreground shadow-[0_-8px_28px_-12px_rgba(0,0,0,0.18)] outline-none",
               className
             )}
             style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
@@ -176,7 +176,7 @@ export const BottomSheet = React.forwardRef<BottomSheetHandle, BottomSheetProps>
               Singapore week — places by day with reservations and tips.
             </Vaul.Description>
             {/* Handle sits outside the animated area so it never moves during swipes */}
-            <div className="mx-auto my-2 h-1.5 w-12 shrink-0 rounded-full bg-muted" />
+            <div className="mx-auto mt-2.5 mb-1.5 h-1 w-10 shrink-0 rounded-full bg-foreground/15" />
             {/*
               overflow:clip clips translated content without creating a scroll
               container (unlike overflow:hidden which sets implicit overflow-y:auto
