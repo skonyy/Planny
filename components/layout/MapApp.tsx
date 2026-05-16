@@ -94,6 +94,14 @@ export function MapApp() {
     [updateUrl]
   );
 
+  const handleSelectPlaceFromMap = useCallback(
+    (id: string) => {
+      setSnap(SHEET_SNAP_POINTS[1]);
+      updateUrl({ placeId: id });
+    },
+    [updateUrl]
+  );
+
   const handleBack = useCallback(() => {
     setSnap(SHEET_SNAP_POINTS[1]);
     updateUrl({ placeId: null });
@@ -147,7 +155,7 @@ export function MapApp() {
         <MapView
           activeDay={activeDay}
           selectedPlaceId={selectedPlaceId}
-          onSelectPlace={handleSelectPlace}
+          onSelectPlace={handleSelectPlaceFromMap}
           bottomPadding={sheetBottomPadding}
           showNavigation={isDesktop}
           userLocation={userLocation}
