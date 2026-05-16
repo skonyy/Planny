@@ -78,8 +78,8 @@ export function MapApp() {
   const sheetBottomPadding = useMemo(() => {
     if (isDesktop) return 60;
     if (viewportH === 0) return 200;
-    if (snap === "92dvh") return Math.round(viewportH * 0.92);
-    if (snap === "50dvh") return Math.round(viewportH * 0.5);
+    if (snap === 0.92) return Math.round(viewportH * 0.92);
+    if (snap === 0.5) return Math.round(viewportH * 0.5);
     return Math.round(viewportH * 0.15);
   }, [snap, isDesktop, viewportH]);
 

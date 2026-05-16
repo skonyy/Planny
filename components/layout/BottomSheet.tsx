@@ -4,7 +4,7 @@ import * as React from "react";
 import { Drawer as Vaul } from "vaul";
 import { cn } from "@/lib/utils";
 
-export const SHEET_SNAP_POINTS = ["15dvh", "50dvh", "92dvh"] as const;
+export const SHEET_SNAP_POINTS = [0.15, 0.5, 0.92] as const;
 export type SheetSnap = (typeof SHEET_SNAP_POINTS)[number];
 
 interface BottomSheetProps {
