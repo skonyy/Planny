@@ -26,10 +26,9 @@ export function FabReservations({ onClick, className }: FabReservationsProps) {
   return (
     <Button
       type="button"
-      variant="coral"
       onClick={onClick}
       className={cn(
-        "fixed right-4 z-40 h-12 gap-2 px-5 shadow-[0_6px_20px_-6px_rgba(217,84,38,0.5)]",
+        "fixed right-4 z-40 h-12 gap-2 px-5 shadow-[0_6px_20px_-6px_rgba(0,0,0,0.35)]",
         className
       )}
       style={{ bottom: "calc(var(--sheet-peek) + env(safe-area-inset-bottom) + 0.75rem)" }}
@@ -37,8 +36,11 @@ export function FabReservations({ onClick, className }: FabReservationsProps) {
       <Ticket className="h-4 w-4" />
       <span className="text-sm font-semibold">Bookings</span>
       <Badge
-        variant={overdue > 0 ? "destructive" : "secondary"}
-        className="ml-0.5 h-5 px-1.5 text-[10px]"
+        variant={overdue > 0 ? "destructive" : "outline"}
+        className={cn(
+          "ml-0.5 h-5 px-1.5 text-[10px]",
+          overdue === 0 && "border-primary-foreground/30 text-primary-foreground"
+        )}
       >
         {total}
       </Badge>

@@ -44,7 +44,7 @@ Live under `components/{map,itinerary,layout}/`. They **compose** primitives —
 | `components/layout/MapApp.tsx`                    | Owns URL state; wires map ↔ sheet ↔ dialog.           |
 | `components/layout/BottomSheet.tsx`               | `vaul` wrapper with 3 snap points. Top radius `rounded-t-[1.5rem]`; subtle grabber (`h-1 w-10 bg-foreground/15`). |
 | `components/layout/DesktopPanel.tsx`              | Left-side panel for `md+`.                            |
-| `components/layout/FabReservations.tsx`           | Floating action button → opens reservations dialog. **Coral** (`variant="coral"`) — the one place the accent is used on a CTA. |
+| `components/layout/FabReservations.tsx`           | Floating action button → opens reservations dialog. Black pill (`variant="default"`) with white count badge. |
 
 ## Decision tree for "do I need a custom component?"
 
