@@ -16,9 +16,9 @@ Use `cn()` from `@/lib/utils` to merge classes. Never duplicate Tailwind logic b
 
 | Component     | Use for                                                                     |
 | ------------- | --------------------------------------------------------------------------- |
-| `Button`      | Any interactive action. Variant `default`/`outline`/`ghost`/`secondary`.    |
-| `Card`        | Place list rows, reservation rows. Use `CardHeader/Content/Footer` slots.   |
-| `Badge`       | Time-of-day pill, category pill, "Reservation needed" indicator.            |
+| `Button`      | Any interactive action. **Pill by default** (`rounded-full` for all sizes). Variants: `default` (black), `outline` (white pill, 1px border), `ghost`, `secondary`, `coral` (accent FAB). Size `lg` ≈ 48px tall. |
+| `Card`        | Place list rows, reservation rows. `rounded-2xl` with `bg-card` (off-white). No border, no shadow — visible only by surface contrast against the white page. |
+| `Badge`       | Time-of-day pill, category pill, "Reservation needed" indicator. Variants: `default`, `secondary`, `outline`, `destructive`, **`coral`** (accent), **`confirmed`** (booked / green). |
 | `Tabs`        | Day pills (re-styled as horizontal scrollable pills).                       |
 | `ScrollArea`  | Place list inside the sheet; reservations accordion if long.                |
 | `Drawer`      | Mobile bottom sheet (built on `vaul`).                                      |
@@ -35,16 +35,16 @@ Live under `components/{map,itinerary,layout}/`. They **compose** primitives —
 | File                                              | Purpose                                               |
 | ------------------------------------------------- | ----------------------------------------------------- |
 | `components/map/MapView.tsx`                      | MapLibre instance + clustered markers + fly-to API.   |
-| `components/map/PlaceMarker.tsx`                  | HTML marker: colored dot + Lucide icon per category.  |
-| `components/itinerary/DayPills.tsx`               | Horizontal scrollable day filter (uses `Tabs`).       |
+| `components/map/PlaceMarker.tsx`                  | HTML marker: colored dot + Lucide icon per category. White 3px ring + shadow for lift; selected = scale-up + 2px coral ring. |
+| `components/itinerary/DayPills.tsx`               | Horizontal scrollable day filter. Pill states: inactive = `bg-card`; active = `bg-foreground text-background`; today (when inactive) = small coral dot indicator (top-right). |
 | `components/itinerary/PlaceList.tsx`              | List of `Card`s for the active day's places.          |
 | `components/itinerary/PlaceDetail.tsx`            | Full place view: description, tips, pregnancy, link.  |
 | `components/itinerary/ReservationsDialog.tsx`     | Dialog wrapping an `Accordion` checklist.             |
 | `components/itinerary/ReservationItem.tsx`        | One row in the accordion.                             |
 | `components/layout/MapApp.tsx`                    | Owns URL state; wires map ↔ sheet ↔ dialog.           |
-| `components/layout/BottomSheet.tsx`               | `vaul` wrapper with 3 snap points.                    |
+| `components/layout/BottomSheet.tsx`               | `vaul` wrapper with 3 snap points. Top radius `rounded-t-[1.5rem]`; subtle grabber (`h-1 w-10 bg-foreground/15`). |
 | `components/layout/DesktopPanel.tsx`              | Left-side panel for `md+`.                            |
-| `components/layout/FabReservations.tsx`           | Floating action button → opens reservations dialog.   |
+| `components/layout/FabReservations.tsx`           | Floating action button → opens reservations dialog. **Coral** (`variant="coral"`) — the one place the accent is used on a CTA. |
 
 ## Decision tree for "do I need a custom component?"
 
