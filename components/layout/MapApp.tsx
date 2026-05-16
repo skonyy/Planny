@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MapView } from "@/components/map/MapView";
 import { DayPills } from "@/components/itinerary/DayPills";
@@ -15,7 +15,8 @@ import {
 import { DesktopPanel } from "@/components/layout/DesktopPanel";
 import { FabReservations } from "@/components/layout/FabReservations";
 import { Button } from "@/components/ui/button";
-import { Ticket } from "lucide-react";
+import { Ticket, LocateFixed } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/lib/hooks/use-media-query";
 import { parseUrlState, serializeUrlState } from "@/lib/url-state";
 import { days } from "@/lib/data/itinerary";
@@ -37,6 +38,25 @@ export function MapApp() {
     selectedPlaceId ? SHEET_SNAP_POINTS[2] : SHEET_SNAP_POINTS[1]
   );
   const [reservationsOpen, setReservationsOpen] = useState(false);
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [isTracking, setIsTracking] = useState(false);
+  const watchIdRef = useRef<number | null>(null);
+
+  const handleGeolocate = useCallback(() => {
+    if (isTracking) {
+      if (watchIdRef.current !== null) navigator.geolocation.clearWatch(watchIdRef.current);
+      watchIdRef.current = null;
+      setIsTracking(false);
+      setUserLocation(null);
+      return;
+    }
+    setIsTracking(true);
+    watchIdRef.current = navigator.geolocation.watchPosition(
+      (pos) => setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+      () => setIsTracking(false),
+      { enableHighAccuracy: true }
+    );
+  }, [isTracking]);
 
   const updateUrl = useCallback(
     (updates: { day?: number | null; placeId?: string | null }) => {
@@ -108,6 +128,7 @@ export function MapApp() {
           onSelectPlace={handleSelectPlace}
           bottomPadding={sheetBottomPadding}
           showNavigation={isDesktop}
+          userLocation={userLocation}
         />
       </div>
 
@@ -146,6 +167,18 @@ export function MapApp() {
             </div>
           </div>
           <FabReservations onClick={() => setReservationsOpen(true)} />
+          <button
+            type="button"
+            onClick={handleGeolocate}
+            className={cn(
+              "fixed left-4 z-40 flex h-12 w-12 items-center justify-center rounded-full border bg-background shadow-lg",
+              isTracking && "bg-primary text-primary-foreground border-primary"
+            )}
+            style={{ bottom: "calc(var(--sheet-peek) + env(safe-area-inset-bottom) + 0.75rem)" }}
+            aria-label="My location"
+          >
+            <LocateFixed className="h-5 w-5" />
+          </button>
           <BottomSheet snap={snap} onSnapChange={setSnap} onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight}>
             {selectedPlaceId ? (
               <PlaceDetail placeId={selectedPlaceId} onBack={handleBack} />

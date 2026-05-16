@@ -151,10 +151,3 @@
 /* MapLibre styles — pulled in by react-map-gl when used.
    We import explicitly so server components can be lean. */
 @import "maplibre-gl/dist/maplibre-gl.css";
-
-/* On mobile, lift bottom-left controls (GeolocateControl) above the bottom sheet */
-@media (max-width: 767px) {
-  .maplibregl-ctrl-bottom-left {
-    bottom: calc(var(--sheet-peek) + env(safe-area-inset-bottom) + 0.75rem);
-  }
-}
