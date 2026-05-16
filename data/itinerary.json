@@ -10,37 +10,37 @@
       "number": 2,
       "date": "2026-05-17",
       "title": "Kopitiam morning · wife arrives LH780",
-      "summary": "Solo morning at Albert Centre + Keong Saik, then T2 pickup at 4:30pm, easy evening near the hotel."
+      "summary": "Solo morning at Albert Centre + Keong Saik, then T2 pickup, Makansutra dinner and Paramore tribute."
     },
     {
       "number": 3,
       "date": "2026-05-18",
-      "title": "Fort Canning · Civic District · CÉ LA VI",
-      "summary": "Together for the first full day — park, National Museum, Esplanade, and the MBS rooftop at 7:30pm."
+      "title": "CapitaSpring · Fort Canning · Esplanade evening",
+      "summary": "Together for the first full day — 51F rooftop farm, Fort Canning, Merlion Park, free Esplanade show and Spectra."
     },
     {
       "number": 4,
       "date": "2026-05-19",
       "title": "Gardens by the Bay — the big one",
-      "summary": "Toast Box + Sultan Mosque morning, then Flower Dome / Cloud Forest / Botero in the afternoon, Satay by the Bay, Garden Rhapsody."
+      "summary": "Toast Box + Sultan Mosque morning, Hjh Maimunah nasi padang, then Flower Dome / Cloud Forest / Botero / Garden Rhapsody."
     },
     {
       "number": 5,
       "date": "2026-05-20",
-      "title": "Little India + Peranakan dinner",
-      "summary": "Clap Cafe, Tekka, Mustafa, long siesta, then True Blue Cuisine at Armenian St."
+      "title": "Southern ridges · Henderson Waves · CÉ LA VI",
+      "summary": "Mount Faber, Henderson Waves bridge at treetop height, VivoCity lunch, then CÉ LA VI 57F sundowner and Spectra."
     },
     {
       "number": 6,
       "date": "2026-05-21",
-      "title": "Chinatown · bumboat · crab",
-      "summary": "Oh Wunder brunch, temples, Maxwell, Telok Ayer walk, river cruise at sunset, Jumbo Seafood."
+      "title": "Chinatown · bumboat · tomato hotpot",
+      "summary": "Oh Wunder brunch, Chinatown temples + shophouses, Maxwell, river cruise at sunset, XiaoYanZhi hotpot."
     },
     {
       "number": 7,
       "date": "2026-05-22",
       "title": "Katong + Jewel sendoff",
-      "summary": "Slow Katong morning, 328 laksa, Jewel Canopy Park, flight home."
+      "summary": "Slow Katong morning, 328 laksa, Jewel Rain Vortex, flight home."
     }
   ],
   "places": [
@@ -172,7 +172,7 @@
       "endTime": "09:30",
       "lat": 1.3010,
       "lng": 103.8541,
-      "description": "5-minute walk from the hotel. Back-row stalls: bak kut teh (peppery pork rib soup), chwee kueh, soon kueh. Easy and local.",
+      "description": "5-minute walk from the hotel. Back-row stalls: bak kut teh (peppery pork rib soup), chwee kueh, soon kueh.",
       "googleRating": 4.1,
       "transit": { "mode": "walk", "duration": 5 }
     },
@@ -210,11 +210,11 @@
       "category": "transit",
       "day": 2,
       "timeOfDay": "afternoon",
-      "startTime": "16:30",
+      "startTime": "15:30",
       "endTime": "18:00",
       "lat": 1.3573,
       "lng": 103.9893,
-      "description": "Track LH780 via the Changi Airport app. Wait near Arrivals Hall A (Starbucks is right there). Scheduled landing 16:30; realistic exit 17:45–18:00 (deplane + immigration + bags from a 747).",
+      "description": "Leave hotel 15:30. Track LH780 via the Changi Airport app. Wait near Arrivals Hall A (Starbucks). Flight lands 16:30; realistic exit 17:45–18:00 (deplane + immigration + bags from a 747).",
       "googleRating": 4.6,
       "transit": { "mode": "mrt", "duration": 45 },
       "tips": [
@@ -223,48 +223,33 @@
       ]
     },
     {
-      "id": "paramore-tribute",
-      "name": "Paramore Tribute — elysrei (OPTIONAL)",
-      "category": "view",
-      "day": 2,
-      "timeOfDay": "evening",
-      "startTime": "19:30",
-      "endTime": "21:00",
-      "lat": 1.2899,
-      "lng": 103.8559,
-      "description": "\"Paramore & more & more\" by elysrei & friends at the DBS Foundation Outdoor Theatre. Free, grass seating, leave anytime. Decide after she lands based on her energy.",
-      "pregnancyNotes": "Optional — only do this if she has energy after a 12-hour flight.",
-      "transit": { "mode": "mrt", "duration": 10 }
-    },
-    {
-      "id": "albert-centre",
-      "name": "Albert Centre dinner",
+      "id": "makansutra-gluttons-bay",
+      "name": "Makansutra Gluttons Bay",
       "category": "hawker",
       "day": 2,
       "timeOfDay": "evening",
-      "startTime": "19:00",
-      "endTime": "20:00",
-      "lat": 1.3010,
-      "lng": 103.8541,
-      "description": "Default if she's too tired for the concert. Bak kut teh, soon kueh, tau suan dessert. Low energy, cheap, 5 min from hotel.",
-      "pregnancyNotes": "Bak kut teh fully cooked. Skip any raw cockle sides.",
+      "startTime": "19:30",
+      "endTime": "20:30",
+      "lat": 1.2894,
+      "lng": 103.8569,
+      "description": "Outdoor hawker stalls right next to the Esplanade outdoor theatre. Marina Bay view + MBS skyline. Chicken rice, satay, char kway teow, sugar cane juice. Eat at picnic tables 1 min from the show grass.",
+      "pregnancyNotes": "Stick to fully cooked options. Skip oyster omelette, raw cockle dishes, sambal belacan.",
       "googleRating": 4.1,
-      "transit": { "mode": "walk", "duration": 5 },
-      "tips": ["Use a tissue packet to reserve a seat — local custom."]
+      "transit": { "mode": "mrt", "duration": 10 }
     },
     {
-      "id": "kampong-glam",
-      "name": "Sultan Mosque by night",
-      "category": "attraction",
+      "id": "paramore-tribute",
+      "name": "Paramore Tribute — elysrei",
+      "category": "view",
       "day": 2,
       "timeOfDay": "night",
-      "startTime": "20:00",
-      "endTime": "21:00",
-      "lat": 1.3023,
-      "lng": 103.8590,
-      "description": "Beautifully lit at night. Gentle walk through Kampong Glam — murals and lanterns along Arab Street and Haji Lane.",
-      "googleRating": 4.7,
-      "transit": { "mode": "walk", "duration": 10 }
+      "startTime": "20:30",
+      "endTime": "22:00",
+      "lat": 1.2899,
+      "lng": 103.8559,
+      "description": "\"Paramore & more & more\" by elysrei & friends at the DBS Foundation Outdoor Theatre. Free, grass seating, leave anytime.",
+      "pregnancyNotes": "Sit on the grass, leave anytime. Bring a small umbrella or poncho — May can rain.",
+      "transit": { "mode": "walk", "duration": 1 }
     },
     {
       "id": "antler-ember",
@@ -272,14 +257,33 @@
       "category": "restaurant",
       "day": 3,
       "timeOfDay": "morning",
-      "startTime": "09:00",
-      "endTime": "10:00",
+      "startTime": "07:30",
+      "endTime": "08:30",
       "lat": 1.2993,
       "lng": 103.8516,
-      "description": "Hotel restaurant at 78 Waterloo St. Breakfast buffet with hot dishes, pastries, fruits. No travel needed — saves energy for the park.",
+      "description": "Hotel restaurant at 78 Waterloo St. Breakfast buffet with hot dishes, pastries, fruits. Early start to catch CapitaSpring walk-ins.",
       "pregnancyNotes": "Ask for hard-boiled eggs if runny options are on the buffet.",
       "googleRating": 4.9,
       "transit": { "mode": "walk", "duration": 1 }
+    },
+    {
+      "id": "capitaspring-sky-garden",
+      "name": "CapitaSpring Sky Garden",
+      "category": "view",
+      "day": 3,
+      "timeOfDay": "morning",
+      "startTime": "08:30",
+      "endTime": "10:00",
+      "lat": 1.2854,
+      "lng": 103.8499,
+      "description": "360° city view from the 51st-floor rooftop urban farm at 88 Market St. SGD 10 walk-in with a drink voucher. Arrive by 8:25am for best chance at walk-ins. Backup: Green Oasis at levels 17–20.",
+      "pregnancyNotes": "Lifts only, flat walking, benches at top. Bring a hat — sun is intense on the rooftop.",
+      "googleRating": 4.5,
+      "transit": { "mode": "mrt", "duration": 8 },
+      "tips": [
+        "Walk-in only — book 2 weeks ahead is not possible now.",
+        "Backup if full: Green Oasis levels 17-20, often less booked."
+      ]
     },
     {
       "id": "fort-canning",
@@ -287,14 +291,14 @@
       "category": "attraction",
       "day": 3,
       "timeOfDay": "midday",
-      "startTime": "10:00",
+      "startTime": "10:30",
       "endTime": "11:30",
       "lat": 1.2973,
       "lng": 103.8463,
-      "description": "Tree Tunnel spiral staircase (the photo spot), Spice Garden, Sundial Garden, ASEAN Sculpture Park. Flat shaded paths — arrive early for a clean Tree Tunnel photo.",
+      "description": "Tree Tunnel spiral staircase (the photo spot), Spice Garden, Sundial Garden, ASEAN Sculpture Park. Flat shaded paths.",
       "pregnancyNotes": "Flat and shaded — comfortable.",
       "googleRating": 4.3,
-      "transit": { "mode": "walk", "duration": 10 }
+      "transit": { "mode": "mrt", "duration": 11 }
     },
     {
       "id": "national-museum",
@@ -327,15 +331,16 @@
     },
     {
       "id": "civic-district-stroll",
-      "name": "Civic District stroll",
+      "name": "Civic District & Merlion Park",
       "category": "attraction",
       "day": 3,
       "timeOfDay": "evening",
       "startTime": "17:30",
       "endTime": "18:30",
-      "lat": 1.2925,
-      "lng": 103.8528,
-      "description": "St Andrew's Cathedral, the Padang, Esplanade Park along the waterfront. Flat and breezy at sunset.",
+      "lat": 1.2868,
+      "lng": 103.8545,
+      "description": "Padang → St Andrew's Cathedral → Esplanade Park → Merlion Park. The 8.6m lion-fish statue spouting water into Marina Bay. Iconic photo, big view of MBS.",
+      "pregnancyNotes": "Flat, breezy at sunset.",
       "transit": { "mode": "walk", "duration": 15 }
     },
     {
@@ -354,43 +359,32 @@
       "tips": ["Plan to be here by 6:30pm for golden hour."]
     },
     {
-      "id": "helix-bridge-walk",
-      "name": "Helix Bridge walk",
-      "category": "view",
-      "day": 3,
-      "timeOfDay": "evening",
-      "startTime": "19:15",
-      "endTime": "19:30",
-      "lat": 1.2870,
-      "lng": 103.8588,
-      "description": "DNA-helix structure lit at dusk. Short scenic walk across to MBS.",
-      "transit": { "mode": "walk" }
-    },
-    {
-      "id": "celavi-skybar",
-      "name": "CÉ LA VI SkyBar",
+      "id": "esplanade-concourse",
+      "name": "Esplanade Concourse free show",
       "category": "view",
       "day": 3,
       "timeOfDay": "evening",
       "startTime": "19:30",
-      "endTime": "22:00",
-      "lat": 1.2847,
-      "lng": 103.8610,
-      "description": "Open-air rooftop bar at Marina Bay Sands Tower 3, Level 57. SGD 35 cover fully redeemable on drinks and food. Real mocktail menu. Spectra light show visible from 57 floors up at 9pm.",
-      "pregnancyNotes": "Full mocktail menu — ask the bartender. No raw seafood in bar bites.",
-      "googleRating": 4.3,
-      "transit": { "mode": "walk", "duration": 5 },
-      "tips": [
-        "Strict dress code: covered shoes, sleeved shirt, long pants.",
-        "Arrive by 7:30 to secure a window seat."
-      ],
-      "reservation": {
-        "required": true,
-        "deadline": "2026-05-17",
-        "bookingUrl": "https://sg.celavi.com/",
-        "priceSGD": "35pp",
-        "notes": "SGD 35pp cover fully redeemable against food and drinks. Mon 18 May 7:30pm."
-      }
+      "endTime": "20:30",
+      "lat": 1.2898,
+      "lng": 103.8559,
+      "description": "Free 30–60 min indoor AC performance at the Esplanade Concourse — dance, music, or theatre. Programme posted that day at esplanade.com.",
+      "pregnancyNotes": "Indoor AC seated show — ideal.",
+      "transit": { "mode": "walk", "duration": 2 }
+    },
+    {
+      "id": "mbs-spectra-d3",
+      "name": "Spectra at Marina Bay",
+      "category": "view",
+      "day": 3,
+      "timeOfDay": "night",
+      "startTime": "21:00",
+      "endTime": "21:15",
+      "lat": 1.2840,
+      "lng": 103.8590,
+      "description": "Free 9pm light and water show. Walk 10 min via Helix Bridge from the Esplanade. Watch from the waterfront promenade.",
+      "googleRating": 4.4,
+      "transit": { "mode": "walk", "duration": 10 }
     },
     {
       "id": "toast-box-bugis",
@@ -402,8 +396,8 @@
       "endTime": "10:30",
       "lat": 1.2991,
       "lng": 103.8559,
-      "description": "Reliable kaya toast chain at 200 Victoria St, Bugis Junction. Toast set, kopi, peanut butter toast. 8 min walk from hotel.",
-      "pregnancyNotes": "Ask for HARD-BOILED eggs — skip the runny half-boiled default.",
+      "description": "Reliable kaya toast chain at 200 Victoria St, Bugis Junction. Toast set, kopi. 8 min walk from hotel.",
+      "pregnancyNotes": "Ask for HARD-BOILED eggs — skip the half-boiled default.",
       "googleRating": 4.1,
       "transit": { "mode": "walk", "duration": 8 }
     },
@@ -414,27 +408,27 @@
       "day": 4,
       "timeOfDay": "midday",
       "startTime": "11:00",
-      "endTime": "12:30",
+      "endTime": "12:00",
       "lat": 1.3023,
       "lng": 103.8590,
-      "description": "Mosque interior open to non-Muslims 10am–12pm and 2–4pm. Malay Heritage Centre courtyard next door. Arab Street fabric shops, Haji Lane murals and indie boutiques.",
+      "description": "Mosque interior open to non-Muslims 10am–12pm. Malay Heritage Centre courtyard next door. Arab Street fabric shops, Haji Lane murals.",
       "googleRating": 4.7,
       "transit": { "mode": "walk", "duration": 10 }
     },
     {
-      "id": "zam-zam",
-      "name": "Zam Zam",
+      "id": "hjh-maimunah",
+      "name": "Hjh Maimunah Restaurant",
       "category": "restaurant",
       "day": 4,
       "timeOfDay": "midday",
-      "startTime": "12:30",
-      "endTime": "14:00",
-      "lat": 1.3022,
+      "startTime": "12:00",
+      "endTime": "13:00",
+      "lat": 1.3031,
       "lng": 103.8585,
-      "description": "Open since 1908. Legendary chicken or mutton murtabak — stuffed flatbread, griddled to order. Biryani also excellent. 697-699 North Bridge Rd.",
-      "pregnancyNotes": "Murtabak and biryani fully cooked — both safe.",
-      "googleRating": 4.2,
-      "transit": { "mode": "walk", "duration": 1 }
+      "description": "Michelin Bib Gourmand nasi padang since 1992 at 11 Jalan Pisang. Point-and-pick: beef rendang, curry squid in squid ink, fried chicken, fish, vegetables. Arrive 11:45 to beat the 12–2pm queue.",
+      "pregnancyNotes": "Everything fully cooked. Skip sambal belacan (raw shrimp paste) and pickled sides. Beef rendang + curry + greens + rice is safe.",
+      "googleRating": 4.5,
+      "transit": { "mode": "walk", "duration": 5 }
     },
     {
       "id": "flower-dome",
@@ -447,7 +441,7 @@
       "lat": 1.2841,
       "lng": 103.8651,
       "description": "Current seasonal floral display. AC, gentle walking, ~45 min. First stop in the Gardens bundle. MRT Downtown Line: Bencoolen → Bayfront, then 5 min walk through the underpass.",
-      "pregnancyNotes": "AC throughout, benches available — comfortable.",
+      "pregnancyNotes": "AC throughout, benches available.",
       "googleRating": 4.6,
       "transit": { "mode": "mrt", "duration": 15, "line": "DTL" },
       "reservation": {
@@ -466,8 +460,8 @@
       "endTime": "17:00",
       "lat": 1.2839,
       "lng": 103.8645,
-      "description": "Cool, misty AC. 35m indoor waterfall, Jurassic World animatronic dinosaurs. Spiral walkways with lifts available.",
-      "pregnancyNotes": "Take the lifts on spirals. Cool climate is welcome.",
+      "description": "Cool, misty AC. 35m indoor waterfall, Jurassic World animatronic dinosaurs. Spiral walkways with lifts.",
+      "pregnancyNotes": "Take the lifts on the spirals. Cool climate is welcome.",
       "googleRating": 4.6,
       "transit": { "mode": "walk", "duration": 2 },
       "tips": ["Covered by the bundle QR code — scan at entrance."]
@@ -482,10 +476,10 @@
       "endTime": "18:30",
       "lat": 1.2839,
       "lng": 103.8615,
-      "description": "Largest Botero exhibition in the world — ~130 original paintings, drawings, and sculptures by Fernando Botero. At IMBA Theatre, West Lawn beside Bayfront Plaza. Last admission Mon–Thu is 6pm.",
-      "pregnancyNotes": "AC throughout, benches available — very comfortable gallery pace.",
+      "description": "Largest Botero exhibition in the world — Singapore is the only SE Asia stop. ~130 original paintings, drawings, and sculptures. At IMBA Theatre, West Lawn beside Bayfront Plaza. Last admission Mon–Thu 6pm.",
+      "pregnancyNotes": "AC throughout, benches available — gallery pace.",
       "transit": { "mode": "walk", "duration": 5 },
-      "tips": ["Covered by the bundle QR code. Natural last stop before walking east to Satay by the Bay."]
+      "tips": ["Covered by the bundle QR code. Natural last stop before walking east to dinner."]
     },
     {
       "id": "satay-by-the-bay",
@@ -497,7 +491,7 @@
       "endTime": "20:30",
       "lat": 1.2821,
       "lng": 103.8689,
-      "description": "Hawker centre inside the Gardens. Chicken satay (well-grilled), Hainanese chicken rice, sugar cane juice. 15–20 min golden-hour walk east through the gardens from Botero.",
+      "description": "Hawker centre inside the Gardens. Chicken satay, Hainanese chicken rice, sugar cane juice. 15–20 min golden-hour walk east through the gardens from Botero.",
       "pregnancyNotes": "Stick to grilled and cooked stalls. Satay fully cooked.",
       "googleRating": 4.0,
       "transit": { "mode": "walk", "duration": 18 }
@@ -517,87 +511,126 @@
       "transit": { "mode": "walk", "duration": 5 }
     },
     {
-      "id": "clap-cafe",
-      "name": "Clap Cafe",
+      "id": "antler-ember-d5",
+      "name": "Antler & Ember (hotel restaurant)",
       "category": "restaurant",
       "day": 5,
       "timeOfDay": "morning",
-      "startTime": "09:30",
-      "endTime": "10:30",
-      "lat": 1.2985,
-      "lng": 103.8519,
-      "description": "Cosy café tucked in Waterloo Centre, 2 min walk from hotel. Strong coffee, pumpkin latte, basque cheesecake, banana bread.",
-      "pregnancyNotes": "Skip latte if at caffeine limit — iced chocolate available.",
-      "googleRating": 4.4,
-      "transit": { "mode": "walk", "duration": 2 }
+      "startTime": "09:00",
+      "endTime": "10:00",
+      "lat": 1.2993,
+      "lng": 103.8516,
+      "description": "Hotel restaurant breakfast before the Southern Ridges walk.",
+      "pregnancyNotes": "Ask for hard-boiled eggs.",
+      "googleRating": 4.9,
+      "transit": { "mode": "walk", "duration": 1 }
     },
     {
-      "id": "tekka-centre",
-      "name": "Tekka Centre + Little India",
-      "category": "hawker",
-      "day": 5,
-      "timeOfDay": "midday",
-      "startTime": "11:00",
-      "endTime": "13:30",
-      "lat": 1.3064,
-      "lng": 103.8507,
-      "description": "665 Buffalo Rd. Wet market downstairs, Sri Veeramakaliamman temple and Tan Teng Niah rainbow shophouse nearby for the photo. Upstairs food court: thosai, biryani, roti prata with chicken curry, mango lassi.",
-      "pregnancyNotes": "SKIP rojak (raw veg). Biryani, prata, and curries fully cooked.",
-      "googleRating": 4.2,
-      "transit": { "mode": "walk", "duration": 10 }
-    },
-    {
-      "id": "mustafa-centre",
-      "name": "Mustafa Centre",
+      "id": "mount-faber",
+      "name": "Mount Faber Peak",
       "category": "attraction",
       "day": 5,
       "timeOfDay": "midday",
+      "startTime": "10:30",
+      "endTime": "11:30",
+      "lat": 1.2710,
+      "lng": 103.8225,
+      "description": "Hilltop park with panoramic harbour views, small Merlion statue. Shaded, gentle paths. MRT Bencoolen → HarbourFront (25 min), then 10 min uphill walk.",
+      "pregnancyNotes": "Gentle stairs from HarbourFront — take it slow. Benches everywhere.",
+      "googleRating": 4.5,
+      "transit": { "mode": "mrt", "duration": 25 }
+    },
+    {
+      "id": "henderson-waves",
+      "name": "Henderson Waves bridge",
+      "category": "attraction",
+      "day": 5,
+      "timeOfDay": "midday",
+      "startTime": "11:30",
+      "endTime": "12:30",
+      "lat": 1.2756,
+      "lng": 103.8174,
+      "description": "Singapore's highest pedestrian bridge, 36m above the road. Seven undulating wooden ribs create sheltered alcoves with benches. Treetop-level views, never crowded. Wheelchair-accessible. Free cold-drink vending machines.",
+      "pregnancyNotes": "Wide deck, gentle incline, sheltered alcoves. Bring water.",
+      "googleRating": 4.5,
+      "transit": { "mode": "walk", "duration": 15 },
+      "tips": ["15 min via Marang Trail — gentle downhill paved path from Mount Faber."]
+    },
+    {
+      "id": "telok-blangah-hill",
+      "name": "Telok Blangah Hill Park (optional)",
+      "category": "attraction",
+      "day": 5,
+      "timeOfDay": "midday",
+      "startTime": "12:30",
+      "endTime": "13:30",
+      "lat": 1.2737,
+      "lng": 103.8125,
+      "description": "Other end of Henderson Waves. Terraced gardens, Alkaff Mansion. Forest Walk continuation closed until July 2026. Skip if tired and turn back over the bridge.",
+      "pregnancyNotes": "Optional — turn back if energy is low.",
+      "transit": { "mode": "walk", "duration": 5 }
+    },
+    {
+      "id": "vivocity-lunch",
+      "name": "VivoCity Food Republic",
+      "category": "restaurant",
+      "day": 5,
+      "timeOfDay": "afternoon",
       "startTime": "13:30",
       "endTime": "15:00",
-      "lat": 1.3100,
-      "lng": 103.8554,
-      "description": "24/7 mega-store at 145 Syed Alwi Rd, 4 floors of affordable everything. Gifts (kaya jam, bak kwa, kopi packets), electronics, snacks. Tourist gift mecca.",
-      "pregnancyNotes": "Lower floors can be crowded and stuffy — take breaks on upper floors.",
-      "googleRating": 4.4,
-      "transit": { "mode": "walk", "duration": 5 },
-      "tips": ["Best for spices, snacks, and anything you forgot to pack."]
+      "lat": 1.2645,
+      "lng": 103.8222,
+      "description": "AC mall food court at 1 HarbourFront Walk. Varied hawker-style stalls, ~SGD 12–18pp. Walk down from the trail or MRT 1 stop from HarbourFront.",
+      "pregnancyNotes": "Stick to thoroughly cooked options.",
+      "googleRating": 4.0,
+      "transit": { "mode": "mrt", "duration": 10 }
     },
     {
-      "id": "peranakan-museum",
-      "name": "Peranakan Museum",
-      "category": "attraction",
+      "id": "helix-bridge-walk",
+      "name": "Helix Bridge walk to MBS",
+      "category": "view",
       "day": 5,
       "timeOfDay": "evening",
       "startTime": "18:00",
-      "endTime": "18:45",
-      "lat": 1.2942,
-      "lng": 103.8491,
-      "description": "Optional 30–40 min visit at 39 Armenian St before dinner. Compact, recently renovated — primes you for True Blue. Adults SGD 18.",
-      "pregnancyNotes": "AC throughout, benches available.",
-      "transit": { "mode": "walk", "duration": 8 },
-      "tips": ["Skip if tired — True Blue is in a heritage shophouse that gives you the Peranakan context anyway."]
+      "endTime": "18:30",
+      "lat": 1.2870,
+      "lng": 103.8588,
+      "description": "DNA-helix structure lit at dusk. Sunset stroll across Marina Bay to MBS.",
+      "transit": { "mode": "mrt", "duration": 10 }
     },
     {
-      "id": "true-blue-cuisine",
-      "name": "True Blue Cuisine",
-      "category": "restaurant",
+      "id": "celavi-skybar",
+      "name": "CÉ LA VI SkyBar",
+      "category": "view",
       "day": 5,
       "timeOfDay": "evening",
-      "startTime": "19:00",
-      "endTime": "21:00",
-      "lat": 1.2945,
-      "lng": 103.8494,
-      "description": "Michelin Bib Gourmand Peranakan at 47/49 Armenian St. Order Ayam Buah Keluak, Beef Rendang, Itek Sio, Ngoh Hiang. ~SGD 50-60pp.",
-      "pregnancyNotes": "All dishes fully cooked slow-braises. No raw fish on menu.",
-      "googleRating": 4.0,
-      "transit": { "mode": "walk", "duration": 1 },
-      "reservation": {
-        "required": true,
-        "deadline": "2026-05-19",
-        "bookingUrl": "https://chope.co/singapore-restaurants/restaurant/true-blue-cuisine",
-        "priceSGD": "50–60pp",
-        "notes": "Book on Chope or call +65 6440 0449. Aim for 7pm Wed 20 May."
-      }
+      "startTime": "18:30",
+      "endTime": "20:30",
+      "lat": 1.2847,
+      "lng": 103.8610,
+      "description": "Walk-in rooftop bar at Marina Bay Sands Tower 3, Level 57. SGD 35 cover fully redeemable on drinks and food. Virgin cocktail menu. Arrive 6:30pm for sunset before the dinner-booking crowd peaks.",
+      "pregnancyNotes": "Real mocktail menu — ask the bartender. No raw seafood in bar bites.",
+      "googleRating": 4.3,
+      "transit": { "mode": "walk", "duration": 5 },
+      "tips": [
+        "Strict dress code: covered shoes, sleeved shirt, long pants.",
+        "Walk-in only — regular seats don't accept bookings."
+      ]
+    },
+    {
+      "id": "mbs-spectra-d5",
+      "name": "Spectra at MBS Event Plaza",
+      "category": "view",
+      "day": 5,
+      "timeOfDay": "night",
+      "startTime": "21:00",
+      "endTime": "21:20",
+      "lat": 1.2840,
+      "lng": 103.8590,
+      "description": "Free 9pm show. Watching at water level puts the lasers and fountains right in front of you — more dramatic than from the rooftop.",
+      "pregnancyNotes": "Standing show — find a bench nearby if needed.",
+      "googleRating": 4.4,
+      "transit": { "mode": "walk", "duration": 10 }
     },
     {
       "id": "oh-wunder-cafe",
@@ -609,7 +642,7 @@
       "endTime": "10:30",
       "lat": 1.2969,
       "lng": 103.8536,
-      "description": "Sit-down brunch at 231 Bain St, #01-69 Bras Basah Complex. Mentaiko salmon spaghetti, steak & eggs, lemon tart. Wunderfolks pastries.",
+      "description": "Sit-down brunch at 231 Bain St, #01-69 Bras Basah Complex. Mentaiko salmon spaghetti, steak & eggs, lemon tart, Wunderfolks pastries.",
       "pregnancyNotes": "Order steak medium-well; no runny eggs.",
       "googleRating": 4.5,
       "transit": { "mode": "walk", "duration": 5 }
@@ -621,29 +654,43 @@
       "day": 6,
       "timeOfDay": "midday",
       "startTime": "11:00",
-      "endTime": "12:00",
+      "endTime": "12:15",
       "lat": 1.2815,
       "lng": 103.8442,
-      "description": "Two of Chinatown's most striking temples. Sri Mariamman on South Bridge Rd, Buddha Tooth just around the corner with a peaceful rooftop garden. Cover shoulders and knees.",
-      "pregnancyNotes": "Gentle walking pace, fine.",
+      "description": "Sri Mariamman first (~20 min, colourful gopuram), then Buddha Tooth (~45 min) — don't miss the rooftop garden with the prayer wheel. Cover shoulders and knees.",
+      "pregnancyNotes": "Gentle walking pace. Cover-up required.",
       "googleRating": 4.6,
       "transit": { "mode": "mrt", "duration": 4 },
       "tips": ["Shoes off at both entrances."]
+    },
+    {
+      "id": "chinatown-walk",
+      "name": "Chinatown shophouse streets",
+      "category": "attraction",
+      "day": 6,
+      "timeOfDay": "midday",
+      "startTime": "12:15",
+      "endTime": "13:30",
+      "lat": 1.2828,
+      "lng": 103.8442,
+      "description": "Pagoda St (heritage shophouses, red lanterns), Smith St, Temple St (antiques, calligraphy), Sago Lane. The Sri Mariamman gopuram + Pagoda St shot is the iconic Chinatown photo.",
+      "pregnancyNotes": "Flat, mostly shaded with five-foot ways.",
+      "transit": { "mode": "walk", "duration": 3 }
     },
     {
       "id": "maxwell-food-centre",
       "name": "Maxwell Food Centre",
       "category": "hawker",
       "day": 6,
-      "timeOfDay": "midday",
-      "startTime": "12:00",
-      "endTime": "14:00",
+      "timeOfDay": "afternoon",
+      "startTime": "13:30",
+      "endTime": "14:45",
       "lat": 1.2803,
       "lng": 103.8448,
-      "description": "1 Kadayanallur St. Ah Tai Hainanese Chicken Rice (#01-07) — ex-Tian Tian chef, shorter queue, fully cooked. Marina South fried carrot cake (cooked egg). Lao Ban soya beancurd dessert.",
+      "description": "1 Kadayanallur St. Ah Tai Hainanese Chicken Rice (#01-07) — ex-Tian Tian chef. Marina South fried carrot cake. Lao Ban soya beancurd dessert. Crowds thin after 1pm.",
       "pregnancyNotes": "Chicken rice and carrot cake fully cooked. Skip oyster omelette stalls.",
       "googleRating": 4.2,
-      "transit": { "mode": "walk", "duration": 7 }
+      "transit": { "mode": "walk", "duration": 5 }
     },
     {
       "id": "thian-hock-keng",
@@ -651,12 +698,12 @@
       "category": "attraction",
       "day": 6,
       "timeOfDay": "afternoon",
-      "startTime": "14:00",
-      "endTime": "16:00",
+      "startTime": "15:00",
+      "endTime": "16:30",
       "lat": 1.2814,
       "lng": 103.8488,
-      "description": "Thian Hock Keng temple on Telok Ayer St, then up Ann Siang Rd through restored shophouses and café-lined streets. Stop for an iced drink. Some hills — use building lifts if tired.",
-      "pregnancyNotes": "Some inclines — building lifts available.",
+      "description": "Thian Hock Keng temple on Telok Ayer St, then up Ann Siang Rd through restored shophouses and café-lined streets. Stop for an iced drink. OPTIONAL — skip if energy is low.",
+      "pregnancyNotes": "Some inclines — use building lifts if tired. Optional.",
       "googleRating": 4.0,
       "transit": { "mode": "walk" }
     },
@@ -683,23 +730,20 @@
       }
     },
     {
-      "id": "jumbo-riverside",
-      "name": "Jumbo Seafood, The Riverwalk",
+      "id": "xiaoyanzhi-hotpot",
+      "name": "XiaoYanZi Tomato Hot Pot",
       "category": "restaurant",
       "day": 6,
       "timeOfDay": "evening",
       "startTime": "19:45",
-      "endTime": "21:30",
+      "endTime": "21:15",
       "lat": 1.2893,
-      "lng": 103.8483,
-      "description": "Use the Riverwalk branch at 20 Upper Circular Rd #B1-48 (not Riverside Point). Singapore chilli crab + black pepper crab, fully cooked. Mantou buns to mop up sauce. Bamboo clam and salted egg prawns excellent.",
-      "pregnancyNotes": "SKIP cockle and clam sides. Crab fully cooked. Skip sashimi if on the menu.",
-      "googleRating": 4.7,
-      "transit": { "mode": "walk", "duration": 5 },
-      "reservation": {
-        "required": true,
-        "notes": "Recommended — book direct or via Chope."
-      }
+      "lng": 103.8464,
+      "description": "Famous fresh tomato broth at 6 Eu Tong Sen St, #03-87 Clarke Quay Central. Get the dual broth (half tomato + half mala). Free-flow drinks, fresh fruit, soft-serve ice cream. Angus beef, fish balls, vegetables cooked at the table.",
+      "pregnancyNotes": "Tomato broth side is mild and pregnancy-friendly. Cook everything thoroughly. Skip raw seafood add-ons.",
+      "googleRating": 4.8,
+      "transit": { "mode": "walk", "duration": 2 },
+      "tips": ["Walk-in usually fine, or book via Chope for a guaranteed table."]
     },
     {
       "id": "chin-mee-chin",
@@ -711,7 +755,7 @@
       "endTime": "10:30",
       "lat": 1.3072,
       "lng": 103.9071,
-      "description": "Legendary Katong kaya toast at 204 East Coast Rd. Charcoal-toasted bread, generous kaya. Many say better than Ya Kun.",
+      "description": "Legendary Katong kaya toast at 204 East Coast Rd. Charcoal-toasted bread, generous kaya. Many say better than Ya Kun. MRT ~30 min from hotel.",
       "pregnancyNotes": "Ask for HARD-BOILED eggs. Kaya is safe (cooked egg + coconut + sugar).",
       "googleRating": 4.0,
       "transit": { "mode": "mrt", "duration": 30 }
@@ -761,7 +805,7 @@
       "transit": { "mode": "mrt", "duration": 35 },
       "tips": [
         "Grab fallback ~SGD 30 if exhausted with bags.",
-        "Jewel is directly connected to T1, T2, T3 by walkway or Skytrain."
+        "Jewel connects to T1, T2, T3 by walkway or Skytrain."
       ]
     },
     {
@@ -780,8 +824,8 @@
       "transit": { "mode": "walk", "duration": 5 }
     },
     {
-      "id": "jewel-canopy-park",
-      "name": "Jewel Canopy Park",
+      "id": "jewel-browse",
+      "name": "Browse Jewel shops",
       "category": "attraction",
       "day": 7,
       "timeOfDay": "evening",
@@ -789,16 +833,9 @@
       "endTime": "19:00",
       "lat": 1.3602,
       "lng": 103.9898,
-      "description": "Level 5 of Jewel. Mirror Maze + Hedge Maze + Topiary Walk. All gentle and fun.",
-      "pregnancyNotes": "Stick to Mirror Maze, Hedge Maze, Topiary Walk. NO Sky Nets, NO Walking Net.",
-      "transit": { "mode": "walk", "duration": 3 },
-      "reservation": {
-        "required": true,
-        "deadline": "2026-05-20",
-        "bookingUrl": "https://www.jewelchangiairport.com/en/attractions/canopy-park.html",
-        "priceSGD": "~10",
-        "notes": "Book on Klook. Skip the Sky Nets (unsafe when pregnant)."
-      }
+      "description": "Wander the shops, find your dinner spot, sit and people-watch. AC throughout, plenty of seating.",
+      "pregnancyNotes": "AC, plenty of seating.",
+      "transit": { "mode": "walk", "duration": 3 }
     },
     {
       "id": "jewel-dinner",
@@ -835,13 +872,10 @@
       "timeOfDay": "night",
       "lat": 1.3644,
       "lng": 103.9915,
-      "description": "Near-midnight flight home. Pick up bags from left-luggage, transit to your departure terminal via Skytrain. Changi immigration is famously fast — 5 min even at peak.",
+      "description": "Near-midnight flight home. Pick up bags from left-luggage, transit to your departure terminal via Skytrain. Be at the gate 2 hours before.",
       "googleRating": 4.6,
       "transit": { "mode": "walk", "duration": 10 },
-      "tips": [
-        "Be at the gate 2 hours before your flight.",
-        "Skytrain connects all terminals — no Grab needed once at the airport."
-      ]
+      "tips": ["Skytrain connects all terminals — no Grab needed once at the airport."]
     }
   ]
 }
