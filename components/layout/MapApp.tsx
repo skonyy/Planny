@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MapView } from "@/components/map/MapView";
 import { DayPills } from "@/components/itinerary/DayPills";
@@ -15,9 +15,10 @@ import {
 import { DesktopPanel } from "@/components/layout/DesktopPanel";
 import { FabReservations } from "@/components/layout/FabReservations";
 import { Button } from "@/components/ui/button";
-import { Ticket } from "lucide-react";
+import { Ticket, LocateFixed } from "lucide-react";
+import { cn } from "@/lib/utils";
 import { useMediaQuery } from "@/lib/hooks/use-media-query";
-import { parseUrlState, serializeUrlState } from "@/lib/url-state";
+import { parseUrlState, serializeUrlState, type UrlState } from "@/lib/url-state";
 import { days } from "@/lib/data/itinerary";
 
 const DESKTOP_LEFT_PAD = 400 + 16;
@@ -27,16 +28,40 @@ export function MapApp() {
   const searchParams = useSearchParams();
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  const urlState = useMemo(
-    () => parseUrlState(new URLSearchParams(searchParams.toString())),
-    [searchParams]
-  );
+  // useSearchParams() lags on initial render for force-static pages — read
+  // window.location directly so the URL is correct on first paint.
+  const [urlState, setUrlState] = useState<UrlState>(() => {
+    if (typeof window === "undefined") return { day: null, placeId: null };
+    return parseUrlState(new URLSearchParams(window.location.search));
+  });
+  useEffect(() => {
+    setUrlState(parseUrlState(new URLSearchParams(window.location.search)));
+  }, [searchParams]);
   const { day: activeDay, placeId: selectedPlaceId } = urlState;
 
   const [snap, setSnap] = useState<SheetSnap | null>(() =>
     selectedPlaceId ? SHEET_SNAP_POINTS[2] : SHEET_SNAP_POINTS[1]
   );
   const [reservationsOpen, setReservationsOpen] = useState(false);
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
+  const [isTracking, setIsTracking] = useState(false);
+  const watchIdRef = useRef<number | null>(null);
+
+  const handleGeolocate = useCallback(() => {
+    if (isTracking) {
+      if (watchIdRef.current !== null) navigator.geolocation.clearWatch(watchIdRef.current);
+      watchIdRef.current = null;
+      setIsTracking(false);
+      setUserLocation(null);
+      return;
+    }
+    setIsTracking(true);
+    watchIdRef.current = navigator.geolocation.watchPosition(
+      (pos) => setUserLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
+      () => setIsTracking(false),
+      { enableHighAccuracy: true }
+    );
+  }, [isTracking]);
 
   const updateUrl = useCallback(
     (updates: { day?: number | null; placeId?: string | null }) => {
@@ -108,6 +133,7 @@ export function MapApp() {
           onSelectPlace={handleSelectPlace}
           bottomPadding={sheetBottomPadding}
           showNavigation={isDesktop}
+          userLocation={userLocation}
         />
       </div>
 
@@ -146,6 +172,18 @@ export function MapApp() {
             </div>
           </div>
           <FabReservations onClick={() => setReservationsOpen(true)} />
+          <button
+            type="button"
+            onClick={handleGeolocate}
+            className={cn(
+              "fixed left-4 z-40 flex h-12 w-12 items-center justify-center rounded-full border bg-background shadow-lg transition-colors",
+              isTracking && "border-blue-500 bg-blue-500 text-white"
+            )}
+            style={{ bottom: "calc(var(--sheet-peek) + env(safe-area-inset-bottom) + 0.75rem)" }}
+            aria-label="My location"
+          >
+            <LocateFixed className="h-5 w-5" />
+          </button>
           <BottomSheet snap={snap} onSnapChange={setSnap} onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight}>
             {selectedPlaceId ? (
               <PlaceDetail placeId={selectedPlaceId} onBack={handleBack} />

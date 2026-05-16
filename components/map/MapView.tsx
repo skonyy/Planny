@@ -4,7 +4,6 @@ import { useEffect, useMemo, useRef } from "react";
 import Map, {
   Marker,
   NavigationControl,
-  GeolocateControl,
   type MapRef,
 } from "react-map-gl/maplibre";
 import { places } from "@/lib/data/itinerary";
@@ -24,6 +23,7 @@ interface MapViewProps {
   onSelectPlace: (id: string) => void;
   bottomPadding?: number;
   showNavigation?: boolean;
+  userLocation?: { lat: number; lng: number } | null;
 }
 
 export function MapView({
@@ -32,8 +32,10 @@ export function MapView({
   onSelectPlace,
   bottomPadding = 200,
   showNavigation = true,
+  userLocation,
 }: MapViewProps) {
   const mapRef = useRef<MapRef>(null);
+  const hasFlownToUser = useRef(false);
 
   const visible = useMemo(
     () => (activeDay == null ? places : places.filter((p) => p.day === activeDay)),
@@ -83,6 +85,23 @@ export function MapView({
     );
   }, [activeDay, selectedPlaceId, bottomPadding]);
 
+  // Fly to user location on first fix; reset when tracking stops
+  useEffect(() => {
+    if (!userLocation) {
+      hasFlownToUser.current = false;
+      return;
+    }
+    if (hasFlownToUser.current) return;
+    const map = mapRef.current;
+    if (!map) return;
+    hasFlownToUser.current = true;
+    map.flyTo({
+      center: [userLocation.lng, userLocation.lat],
+      zoom: 16,
+      duration: 700,
+    });
+  }, [userLocation]);
+
   return (
     <Map
       ref={mapRef}
@@ -93,7 +112,21 @@ export function MapView({
       style={{ width: "100%", height: "100%" }}
     >
       {showNavigation && <NavigationControl position="top-right" showCompass={false} />}
-      <GeolocateControl position="top-right" trackUserLocation showAccuracyCircle />
+
+      {userLocation && (
+        <Marker
+          longitude={userLocation.lng}
+          latitude={userLocation.lat}
+          anchor="center"
+        >
+          {/* Pulsing blue dot for user location */}
+          <div className="relative flex items-center justify-center">
+            <div className="absolute h-10 w-10 rounded-full bg-blue-500/20 animate-ping" />
+            <div className="relative h-4 w-4 rounded-full bg-blue-500 border-2 border-white shadow-md" />
+          </div>
+        </Marker>
+      )}
+
       {visible.map((place) => (
         <Marker
           key={place.id}
