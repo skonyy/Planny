@@ -65,7 +65,34 @@ When a place is both — say, Jumbo Seafood next to the river view — pick the 
 | `evening`   | 17–20       |
 | `night`     | 20+         |
 
-Pick one. Used for sort order within a day.
+Pick one. Used for sort order within a day **when `startTime` is not set**.
+
+## Start / end times
+
+Optional `startTime` and `endTime` (24h `HH:mm`) tell the UI:
+
+- when to sort the place into the day's flow,
+- how long you can stay (`endTime − startTime`),
+- when to start the live "leave by" countdown during the trip.
+
+Author both, or leave both blank. If unsure, leave blank — the UI falls back to the `timeOfDay` bucket.
+
+```jsonc
+"startTime": "14:30",
+"endTime":   "16:00"
+```
+
+Rules: zero-padded (`"09:15"`, not `"9:15"`), `endTime` must be later than `startTime`.
+
+## Google rating
+
+Optional `googleRating` — single number 0.0–5.0. Source: open Google Maps, search the place, copy the rating Google shows under the name. No review count, no link.
+
+```jsonc
+"googleRating": 4.5
+```
+
+Omit when unknown — the star simply won't render.
 
 ## Adding a new place — checklist
 

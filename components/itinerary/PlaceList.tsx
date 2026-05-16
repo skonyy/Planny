@@ -2,9 +2,14 @@
 
 import { places, days } from "@/lib/data/itinerary";
 import { markerStyle } from "@/lib/markers";
-import { TIME_OF_DAY_ORDER } from "@/lib/types";
+import {
+  formatDuration,
+  formatTimeRange,
+  parseHHmm,
+  sortPlacesByTime,
+} from "@/lib/time";
 import { Badge } from "@/components/ui/badge";
-import { Ticket } from "lucide-react";
+import { Star, Ticket } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface PlaceListProps {
@@ -18,12 +23,9 @@ export function PlaceList({
   onSelectPlace,
   selectedPlaceId,
 }: PlaceListProps) {
-  const visible = (activeDay == null ? places : places.filter((p) => p.day === activeDay))
-    .slice()
-    .sort((a, b) => {
-      if (a.day !== b.day) return a.day - b.day;
-      return TIME_OF_DAY_ORDER[a.timeOfDay] - TIME_OF_DAY_ORDER[b.timeOfDay];
-    });
+  const visible = sortPlacesByTime(
+    activeDay == null ? places : places.filter((p) => p.day === activeDay)
+  );
 
   const activeDayMeta = activeDay != null ? days.find((d) => d.number === activeDay) : null;
 
@@ -42,7 +44,7 @@ export function PlaceList({
           </h2>
         )}
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-6">
+      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-6">
         <ul className="flex flex-col gap-1.5">
           {visible.map((place) => {
             const { icon: Icon, bgClass } = markerStyle(place.category);
@@ -78,10 +80,26 @@ export function PlaceList({
                       )}
                     </span>
                     <span className="mt-0.5 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
-                      <Badge variant="outline" className="font-normal capitalize">
-                        {place.timeOfDay}
-                      </Badge>
+                      {place.startTime && place.endTime ? (
+                        <span className="font-medium text-foreground/80">
+                          {formatTimeRange(place.startTime, place.endTime)}
+                          {" · "}
+                          {formatDuration(
+                            parseHHmm(place.endTime) - parseHHmm(place.startTime)
+                          )}
+                        </span>
+                      ) : (
+                        <Badge variant="outline" className="font-normal capitalize">
+                          {place.timeOfDay}
+                        </Badge>
+                      )}
                       <span className="capitalize">{place.category}</span>
+                      {place.googleRating != null && (
+                        <span className="flex items-center gap-0.5">
+                          <Star className="h-3 w-3 fill-current" strokeWidth={0} />
+                          {place.googleRating.toFixed(1)}
+                        </span>
+                      )}
                     </span>
                   </span>
                 </button>

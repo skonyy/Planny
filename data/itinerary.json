@@ -115,9 +115,12 @@
       "category": "attraction",
       "day": 2,
       "timeOfDay": "afternoon",
+      "startTime": "14:30",
+      "endTime": "16:00",
       "lat": 1.2839,
       "lng": 103.8638,
       "description": "Cool, AC, magical. Hit this first — Tulipmania closes today. MRT Downtown Line: Bencoolen → Bayfront, 10 min.",
+      "googleRating": 4.6,
       "reservation": {
         "required": true,
         "deadline": "2026-05-17",
@@ -132,10 +135,13 @@
       "category": "attraction",
       "day": 2,
       "timeOfDay": "afternoon",
+      "startTime": "16:15",
+      "endTime": "17:30",
       "lat": 1.2848,
       "lng": 103.8639,
       "description": "Mist, AC, the Jurassic World exhibition, indoor waterfall. Second stop after Flower Dome.",
-      "tips": ["Take an AC rest break on the benches between domes."]
+      "tips": ["Take an AC rest break on the benches between domes."],
+      "googleRating": 4.6
     },
     {
       "id": "supertree-grove",

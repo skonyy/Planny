@@ -1,7 +1,15 @@
 "use client";
 
-import { getPlace, getDay } from "@/lib/data/itinerary";
+import { getPlace, getDay, places } from "@/lib/data/itinerary";
 import { markerStyle } from "@/lib/markers";
+import { useCurrentTime } from "@/lib/hooks/use-current-time";
+import {
+  formatDuration,
+  formatTimeRange,
+  parseHHmm,
+  placeDateTime,
+  sortPlacesByTime,
+} from "@/lib/time";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -11,7 +19,12 @@ import {
   CalendarClock,
   Baby,
   Lightbulb,
+  Clock,
+  Footprints,
+  TrainFront,
+  Star,
 } from "lucide-react";
+import type { Place, Day } from "@/lib/types";
 
 interface PlaceDetailProps {
   placeId: string;
@@ -20,6 +33,7 @@ interface PlaceDetailProps {
 
 export function PlaceDetail({ placeId, onBack }: PlaceDetailProps) {
   const place = getPlace(placeId);
+  const now = useCurrentTime();
 
   if (!place) {
     return (
@@ -36,11 +50,15 @@ export function PlaceDetail({ placeId, onBack }: PlaceDetailProps) {
   const { icon: Icon, bgClass, label } = markerStyle(place.category);
   const day = getDay(place.day);
 
-  const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}&travelmode=walking`;
+  const walkUrl = `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}&travelmode=walking`;
+  const transitUrl = `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}&travelmode=transit`;
+
+  const hasSchedule = !!(place.startTime && place.endTime && day);
+  const nextPlace = hasSchedule ? findNextPlace(place) : null;
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex items-center justify-between px-3 pb-1 pt-1">
+      <div className="flex items-center justify-between px-4 pb-1 pt-1">
         <Button variant="ghost" size="sm" onClick={onBack} className="-ml-1">
           <ArrowLeft className="h-4 w-4" />
           Back
@@ -58,6 +76,12 @@ export function PlaceDetail({ placeId, onBack }: PlaceDetailProps) {
             <div className="mt-1 flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground">
               <Badge variant="secondary" className="capitalize">{label}</Badge>
               <Badge variant="outline" className="font-normal capitalize">{place.timeOfDay}</Badge>
+              {place.googleRating != null && (
+                <span className="flex items-center gap-0.5 font-medium text-foreground/80">
+                  <Star className="h-3.5 w-3.5 fill-current" strokeWidth={0} />
+                  {place.googleRating.toFixed(1)}
+                </span>
+              )}
               {day && (
                 <span>
                   Day {day.number} · {formatDate(day.date)}
@@ -70,6 +94,10 @@ export function PlaceDetail({ placeId, onBack }: PlaceDetailProps) {
         <p className="mt-4 text-sm leading-relaxed text-foreground/90">
           {place.description}
         </p>
+
+        {hasSchedule && day && (
+          <Schedule place={place} day={day} now={now} nextPlace={nextPlace} />
+        )}
 
         {place.pregnancyNotes && (
           <Section icon={Baby} title="Pregnancy note">
@@ -121,15 +149,107 @@ export function PlaceDetail({ placeId, onBack }: PlaceDetailProps) {
 
         <Separator className="my-5" />
 
-        <Button asChild variant="outline" size="sm" className="w-full">
-          <a href={directionsUrl} target="_blank" rel="noopener noreferrer">
-            Directions
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-        </Button>
+        <div className="flex gap-2">
+          <Button asChild variant="outline" size="sm" className="flex-1">
+            <a href={walkUrl} target="_blank" rel="noopener noreferrer">
+              <Footprints className="h-3.5 w-3.5" />
+              Walk
+            </a>
+          </Button>
+          <Button asChild variant="outline" size="sm" className="flex-1">
+            <a href={transitUrl} target="_blank" rel="noopener noreferrer">
+              <TrainFront className="h-3.5 w-3.5" />
+              Metro
+            </a>
+          </Button>
+        </div>
       </div>
     </div>
   );
+}
+
+function findNextPlace(current: Place): Place | null {
+  const sameDay = sortPlacesByTime(
+    places.filter((p) => p.day === current.day && p.startTime)
+  );
+  const idx = sameDay.findIndex((p) => p.id === current.id);
+  if (idx === -1 || idx === sameDay.length - 1) return null;
+  return sameDay[idx + 1];
+}
+
+function Schedule({
+  place,
+  day,
+  now,
+  nextPlace,
+}: {
+  place: Place;
+  day: Day;
+  now: Date;
+  nextPlace: Place | null;
+}) {
+  const start = place.startTime!;
+  const end = place.endTime!;
+  const duration = formatDuration(parseHHmm(end) - parseHHmm(start));
+
+  const startAt = placeDateTime(day, start);
+  const endAt = placeDateTime(day, end);
+  const status = computeStatus(now, startAt, endAt);
+
+  return (
+    <div className="mt-5 rounded-lg border bg-muted/40 p-3">
+      <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+        <Clock className="h-4 w-4" />
+        Planned {formatTimeRange(start, end)} · {duration}
+      </div>
+      {status && (
+        <div
+          className={
+            status.kind === "ended"
+              ? "mt-1 text-sm text-muted-foreground"
+              : "mt-1 text-sm font-medium text-foreground"
+          }
+        >
+          {status.text}
+        </div>
+      )}
+      {nextPlace?.startTime && (
+        <div className="mt-1 text-xs text-muted-foreground">
+          Next: {nextPlace.name} at {nextPlace.startTime}
+        </div>
+      )}
+    </div>
+  );
+}
+
+type Status =
+  | { kind: "before"; text: string }
+  | { kind: "during"; text: string }
+  | { kind: "ended"; text: string };
+
+function computeStatus(now: Date, startAt: Date, endAt: Date): Status | null {
+  const nowMs = now.getTime();
+  // Only show live status on the place's own calendar day
+  const sameDay =
+    now.getFullYear() === startAt.getFullYear() &&
+    now.getMonth() === startAt.getMonth() &&
+    now.getDate() === startAt.getDate();
+  if (!sameDay) return null;
+
+  if (nowMs < startAt.getTime()) {
+    const mins = Math.round((startAt.getTime() - nowMs) / 60_000);
+    return { kind: "before", text: `Starts in ${formatDuration(mins)}` };
+  }
+  if (nowMs <= endAt.getTime()) {
+    const mins = Math.round((endAt.getTime() - nowMs) / 60_000);
+    const endHHmm = `${String(endAt.getHours()).padStart(2, "0")}:${String(endAt.getMinutes()).padStart(2, "0")}`;
+    return {
+      kind: "during",
+      text: `Leave by ${endHHmm} · ${formatDuration(mins)} left`,
+    };
+  }
+  const mins = Math.round((nowMs - endAt.getTime()) / 60_000);
+  return { kind: "ended", text: `Ended ${formatDuration(mins)} ago` };
 }
 
 function Section({

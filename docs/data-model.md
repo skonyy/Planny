@@ -38,12 +38,15 @@ export interface Place {
   category: PlaceCategory
   day: number               // 1–7
   timeOfDay: TimeOfDay
+  startTime?: string        // "HH:mm" 24h, e.g. "14:30"
+  endTime?: string          // "HH:mm" 24h, must be after startTime
   lat: number               // decimal degrees
   lng: number               // decimal degrees
   description: string       // 1–3 sentences
   pregnancyNotes?: string   // optional safety / dietary note
   tips?: string[]           // bullet points
   reservation?: Reservation
+  googleRating?: number     // 0.0–5.0, from Google Maps
 }
 
 export interface Day {
@@ -74,11 +77,14 @@ export interface Day {
       "category": "hawker",
       "day": 1,
       "timeOfDay": "evening",
+      "startTime": "18:30",
+      "endTime": "20:00",
       "lat": 1.3026,
       "lng": 103.8546,
       "description": "5-min walk from the hotel. First taste of hawker culture: bak kut teh, soon kueh, chwee kueh.",
       "pregnancyNotes": "Closed Thursdays. All recommended dishes are fully cooked.",
-      "tips": ["Try bak kut teh at the back end."]
+      "tips": ["Try bak kut teh at the back end."],
+      "googleRating": 4.2
     }
     // ...
   ]

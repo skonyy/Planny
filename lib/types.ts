@@ -27,12 +27,15 @@ export interface Place {
   category: PlaceCategory;
   day: number;
   timeOfDay: TimeOfDay;
+  startTime?: string;
+  endTime?: string;
   lat: number;
   lng: number;
   description: string;
   pregnancyNotes?: string;
   tips?: string[];
   reservation?: Reservation;
+  googleRating?: number;
 }
 
 export interface Day {

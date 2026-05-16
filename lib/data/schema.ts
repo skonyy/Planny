@@ -25,22 +25,32 @@ const reservation = z.object({
   notes: z.string().optional(),
 });
 
-const place = z.object({
-  id: z
-    .string()
-    .min(1)
-    .regex(/^[a-z0-9-]+$/, "ids must be lowercase-with-hyphens"),
-  name: z.string().min(1),
-  category: placeCategory,
-  day: z.number().int().min(1).max(7),
-  timeOfDay,
-  lat: z.number().min(1.1).max(1.5),
-  lng: z.number().min(103.5).max(104.1),
-  description: z.string().min(1),
-  pregnancyNotes: z.string().optional(),
-  tips: z.array(z.string()).optional(),
-  reservation: reservation.optional(),
-});
+const hhmm = z.string().regex(/^([01]\d|2[0-3]):[0-5]\d$/, "use HH:mm 24h");
+
+const place = z
+  .object({
+    id: z
+      .string()
+      .min(1)
+      .regex(/^[a-z0-9-]+$/, "ids must be lowercase-with-hyphens"),
+    name: z.string().min(1),
+    category: placeCategory,
+    day: z.number().int().min(1).max(7),
+    timeOfDay,
+    startTime: hhmm.optional(),
+    endTime: hhmm.optional(),
+    lat: z.number().min(1.1).max(1.5),
+    lng: z.number().min(103.5).max(104.1),
+    description: z.string().min(1),
+    pregnancyNotes: z.string().optional(),
+    tips: z.array(z.string()).optional(),
+    reservation: reservation.optional(),
+    googleRating: z.number().min(0).max(5).optional(),
+  })
+  .refine(
+    (p) => !(p.startTime && p.endTime) || p.endTime > p.startTime,
+    { message: "endTime must be after startTime", path: ["endTime"] }
+  );
 
 const day = z.object({
   number: z.number().int().min(1).max(7),
