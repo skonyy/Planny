@@ -1,12 +1,6 @@
 {
   "days": [
     {
-      "number": 1,
-      "date": "2026-05-16",
-      "title": "Solo — Tiong Bahru, Sim Lim, Spectra",
-      "summary": "Foodie morning in Tiong Bahru, hardware hunting at Sim Lim, Led Zeppelin tribute and Spectra at night."
-    },
-    {
       "number": 2,
       "date": "2026-05-17",
       "title": "Kopitiam morning · wife arrives LH780",
@@ -45,124 +39,6 @@
   ],
   "places": [
     {
-      "id": "waterloo-hotel",
-      "name": "Hotel Waterloo Singapore",
-      "category": "hotel",
-      "day": 1,
-      "timeOfDay": "afternoon",
-      "lat": 1.3010,
-      "lng": 103.8550,
-      "description": "Your base for the week — 78 Waterloo St, Handwritten Collection. Central, walkable to Bugis, Kampong Glam, Bras Basah, Civic District.",
-      "googleRating": 4.3,
-      "tips": [
-        "Request a late checkout for Fri 22 May.",
-        "Bag storage available after checkout."
-      ]
-    },
-    {
-      "id": "heap-seng-leong",
-      "name": "Heap Seng Leong Coffeeshop",
-      "category": "restaurant",
-      "day": 1,
-      "timeOfDay": "morning",
-      "startTime": "08:00",
-      "endTime": "09:30",
-      "lat": 1.3054,
-      "lng": 103.8637,
-      "description": "Old-school kopitiam from 1974 at 10 North Bridge Rd. Charcoal-toasted butter kaya toast, kopi from a sock filter. Pure 1960s Singapore.",
-      "googleRating": 4.3,
-      "transit": { "mode": "walk", "duration": 13 }
-    },
-    {
-      "id": "tiong-bahru-market",
-      "name": "Tiong Bahru Market & Hawker Centre",
-      "category": "hawker",
-      "day": 1,
-      "timeOfDay": "midday",
-      "startTime": "11:30",
-      "endTime": "13:30",
-      "lat": 1.2851,
-      "lng": 103.8328,
-      "description": "1950s art deco estate hawker centre. Loo's Hainanese Curry Rice, chwee kueh, lor mee. Several Michelin-mentioned stalls.",
-      "googleRating": 4.3,
-      "transit": { "mode": "mrt", "duration": 12, "line": "EWL" }
-    },
-    {
-      "id": "tiong-bahru-bakery",
-      "name": "Tiong Bahru Bakery",
-      "category": "restaurant",
-      "day": 1,
-      "timeOfDay": "afternoon",
-      "startTime": "13:30",
-      "endTime": "14:00",
-      "lat": 1.2845,
-      "lng": 103.8337,
-      "description": "Flagship branch at 56 Eng Hoon St. Famous kouign-amann, croissants, flat white. Coffee and dessert stop after the market.",
-      "googleRating": 4.3,
-      "transit": { "mode": "walk", "duration": 2 }
-    },
-    {
-      "id": "sim-lim-square",
-      "name": "Sim Lim Square",
-      "category": "attraction",
-      "day": 1,
-      "timeOfDay": "afternoon",
-      "startTime": "14:30",
-      "endTime": "17:00",
-      "lat": 1.3030,
-      "lng": 103.8529,
-      "description": "Six floors of tech, electronics, components, and used gear. Hardware tinkerer's mecca. Cash gets better prices.",
-      "googleRating": 4.0,
-      "transit": { "mode": "mrt", "duration": 12, "line": "EWL" },
-      "tips": [
-        "Cash only at most stalls.",
-        "Upper floors are less touristy — better deals on components."
-      ]
-    },
-    {
-      "id": "lau-pa-sat",
-      "name": "Lau Pa Sat & Satay Street",
-      "category": "hawker",
-      "day": 1,
-      "timeOfDay": "evening",
-      "startTime": "18:30",
-      "endTime": "19:30",
-      "lat": 1.2805,
-      "lng": 103.8504,
-      "description": "Victorian cast-iron market. Head to Boon Tat St when the satay grills fire up at 7pm — stalls 7 & 8 are the famous ones. Chicken and beef satay, sugar cane juice.",
-      "pregnancyNotes": "Chicken and beef satay fully cooked.",
-      "googleRating": 4.3,
-      "transit": { "mode": "mrt", "duration": 11 }
-    },
-    {
-      "id": "led-zeppelin-tribute",
-      "name": "Led Zeppelin Tribute — Immigrant Sonz",
-      "category": "view",
-      "day": 1,
-      "timeOfDay": "evening",
-      "startTime": "19:30",
-      "endTime": "21:00",
-      "lat": 1.2899,
-      "lng": 103.8559,
-      "description": "Free outdoor tribute concert at the DBS Foundation Outdoor Theatre (Esplanade waterfront stage). Grass seating, no booking.",
-      "transit": { "mode": "walk", "duration": 10 },
-      "tips": ["Bring water. Grass seating — small towel useful."]
-    },
-    {
-      "id": "mbs-spectra",
-      "name": "Spectra at Marina Bay",
-      "category": "view",
-      "day": 1,
-      "timeOfDay": "night",
-      "startTime": "21:00",
-      "endTime": "21:15",
-      "lat": 1.2840,
-      "lng": 103.8590,
-      "description": "Free 9pm light and water show across Marina Bay. Walk over Helix Bridge from the Esplanade to get there.",
-      "googleRating": 4.4,
-      "transit": { "mode": "walk", "duration": 5 }
-    },
-    {
       "id": "albert-centre-morning",
       "name": "Albert Centre breakfast",
       "category": "hawker",
@@ -174,7 +50,10 @@
       "lng": 103.8541,
       "description": "5-minute walk from the hotel. Back-row stalls: bak kut teh (peppery pork rib soup), chwee kueh, soon kueh.",
       "googleRating": 4.1,
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "keong-saik-walk",
@@ -187,7 +66,10 @@
       "lat": 1.2790,
       "lng": 103.8408,
       "description": "Singapore's prettiest restored shophouses — former brothel district turned boutique hotel zone. Quiet on Sunday mornings.",
-      "transit": { "mode": "mrt", "duration": 12 }
+      "transit": {
+        "mode": "mrt",
+        "duration": 12
+      }
     },
     {
       "id": "hong-lim-fc",
@@ -202,7 +84,10 @@
       "description": "Off-tourist-track hawker at 531A Upper Cross St. Ji Ji Wanton Mee inside; Ya Hua Bak Kut Teh nearby. Bib Gourmand curry chicken noodle on level 2.",
       "pregnancyNotes": "Bak kut teh and wanton mee fully cooked.",
       "googleRating": 4.3,
-      "transit": { "mode": "walk", "duration": 10 }
+      "transit": {
+        "mode": "walk",
+        "duration": 10
+      }
     },
     {
       "id": "changi-t2-arrival",
@@ -216,7 +101,10 @@
       "lng": 103.9893,
       "description": "Leave hotel 15:30. Track LH780 via the Changi Airport app. Wait near Arrivals Hall A (Starbucks). Flight lands 16:30; realistic exit 17:45–18:00 (deplane + immigration + bags from a 747).",
       "googleRating": 4.6,
-      "transit": { "mode": "mrt", "duration": 45 },
+      "transit": {
+        "mode": "mrt",
+        "duration": 45
+      },
       "tips": [
         "Tanah Merah is the interchange — take the Changi Airport branch there.",
         "Grab home justified: jet-lagged pregnant wife + luggage + heat (~SGD 25, 30 min via ECP)."
@@ -235,7 +123,10 @@
       "description": "Outdoor hawker stalls right next to the Esplanade outdoor theatre. Marina Bay view + MBS skyline. Chicken rice, satay, char kway teow, sugar cane juice. Eat at picnic tables 1 min from the show grass.",
       "pregnancyNotes": "Stick to fully cooked options. Skip oyster omelette, raw cockle dishes, sambal belacan.",
       "googleRating": 4.1,
-      "transit": { "mode": "mrt", "duration": 10 }
+      "transit": {
+        "mode": "mrt",
+        "duration": 10
+      }
     },
     {
       "id": "paramore-tribute",
@@ -249,7 +140,10 @@
       "lng": 103.8559,
       "description": "\"Paramore & more & more\" by elysrei & friends at the DBS Foundation Outdoor Theatre. Free, grass seating, leave anytime.",
       "pregnancyNotes": "Sit on the grass, leave anytime. Bring a small umbrella or poncho — May can rain.",
-      "transit": { "mode": "walk", "duration": 1 }
+      "transit": {
+        "mode": "walk",
+        "duration": 1
+      }
     },
     {
       "id": "antler-ember",
@@ -264,7 +158,10 @@
       "description": "Hotel restaurant at 78 Waterloo St. Breakfast buffet with hot dishes, pastries, fruits. Early start to catch CapitaSpring walk-ins.",
       "pregnancyNotes": "Ask for hard-boiled eggs if runny options are on the buffet.",
       "googleRating": 4.9,
-      "transit": { "mode": "walk", "duration": 1 }
+      "transit": {
+        "mode": "walk",
+        "duration": 1
+      }
     },
     {
       "id": "capitaspring-sky-garden",
@@ -279,7 +176,10 @@
       "description": "360° city view from the 51st-floor rooftop urban farm at 88 Market St. SGD 10 walk-in with a drink voucher. Arrive by 8:25am for best chance at walk-ins. Backup: Green Oasis at levels 17–20.",
       "pregnancyNotes": "Lifts only, flat walking, benches at top. Bring a hat — sun is intense on the rooftop.",
       "googleRating": 4.5,
-      "transit": { "mode": "mrt", "duration": 8 },
+      "transit": {
+        "mode": "mrt",
+        "duration": 8
+      },
       "tips": [
         "Walk-in only — book 2 weeks ahead is not possible now.",
         "Backup if full: Green Oasis levels 17-20, often less booked."
@@ -298,7 +198,10 @@
       "description": "Tree Tunnel spiral staircase (the photo spot), Spice Garden, Sundial Garden, ASEAN Sculpture Park. Flat shaded paths.",
       "pregnancyNotes": "Flat and shaded — comfortable.",
       "googleRating": 4.3,
-      "transit": { "mode": "mrt", "duration": 11 }
+      "transit": {
+        "mode": "mrt",
+        "duration": 11
+      }
     },
     {
       "id": "national-museum",
@@ -313,7 +216,10 @@
       "description": "Heavily air-conditioned. The History Gallery gives the best trip context. Adults SGD 15. 5 min downhill from Fort Canning.",
       "pregnancyNotes": "AC throughout, benches available.",
       "googleRating": 4.6,
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "funan-mall",
@@ -327,7 +233,10 @@
       "lng": 103.8497,
       "description": "AC food court at 107 North Bridge Rd. Picnic Funan food hall on level 7 has better-rated stalls.",
       "pregnancyNotes": "Stick to thoroughly cooked options.",
-      "transit": { "mode": "walk", "duration": 10 }
+      "transit": {
+        "mode": "walk",
+        "duration": 10
+      }
     },
     {
       "id": "civic-district-stroll",
@@ -341,7 +250,10 @@
       "lng": 103.8545,
       "description": "Padang → St Andrew's Cathedral → Esplanade Park → Merlion Park. The 8.6m lion-fish statue spouting water into Marina Bay. Iconic photo, big view of MBS.",
       "pregnancyNotes": "Flat, breezy at sunset.",
-      "transit": { "mode": "walk", "duration": 15 }
+      "transit": {
+        "mode": "walk",
+        "duration": 15
+      }
     },
     {
       "id": "esplanade-roof",
@@ -355,8 +267,13 @@
       "lng": 103.8559,
       "description": "Free public roof garden — lift up Esplanade Mall. Sweeping Marina Bay view, far less crowded than MBS.",
       "googleRating": 4.6,
-      "transit": { "mode": "walk", "duration": 5 },
-      "tips": ["Plan to be here by 6:30pm for golden hour."]
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      },
+      "tips": [
+        "Plan to be here by 6:30pm for golden hour."
+      ]
     },
     {
       "id": "esplanade-concourse",
@@ -370,7 +287,10 @@
       "lng": 103.8559,
       "description": "Free 30–60 min indoor AC performance at the Esplanade Concourse — dance, music, or theatre. Programme posted that day at esplanade.com.",
       "pregnancyNotes": "Indoor AC seated show — ideal.",
-      "transit": { "mode": "walk", "duration": 2 }
+      "transit": {
+        "mode": "walk",
+        "duration": 2
+      }
     },
     {
       "id": "mbs-spectra-d3",
@@ -384,7 +304,10 @@
       "lng": 103.8590,
       "description": "Free 9pm light and water show. Walk 10 min via Helix Bridge from the Esplanade. Watch from the waterfront promenade.",
       "googleRating": 4.4,
-      "transit": { "mode": "walk", "duration": 10 }
+      "transit": {
+        "mode": "walk",
+        "duration": 10
+      }
     },
     {
       "id": "toast-box-bugis",
@@ -399,7 +322,10 @@
       "description": "Reliable kaya toast chain at 200 Victoria St, Bugis Junction. Toast set, kopi. 8 min walk from hotel.",
       "pregnancyNotes": "Ask for HARD-BOILED eggs — skip the half-boiled default.",
       "googleRating": 4.1,
-      "transit": { "mode": "walk", "duration": 8 }
+      "transit": {
+        "mode": "walk",
+        "duration": 8
+      }
     },
     {
       "id": "sultan-mosque-arab-st",
@@ -413,7 +339,10 @@
       "lng": 103.8590,
       "description": "Mosque interior open to non-Muslims 10am–12pm. Malay Heritage Centre courtyard next door. Arab Street fabric shops, Haji Lane murals.",
       "googleRating": 4.7,
-      "transit": { "mode": "walk", "duration": 10 }
+      "transit": {
+        "mode": "walk",
+        "duration": 10
+      }
     },
     {
       "id": "hjh-maimunah",
@@ -428,7 +357,10 @@
       "description": "Michelin Bib Gourmand nasi padang since 1992 at 11 Jalan Pisang. Point-and-pick: beef rendang, curry squid in squid ink, fried chicken, fish, vegetables. Arrive 11:45 to beat the 12–2pm queue.",
       "pregnancyNotes": "Everything fully cooked. Skip sambal belacan (raw shrimp paste) and pickled sides. Beef rendang + curry + greens + rice is safe.",
       "googleRating": 4.5,
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "flower-dome",
@@ -443,7 +375,11 @@
       "description": "Current seasonal floral display. AC, gentle walking, ~45 min. First stop in the Gardens bundle. MRT Downtown Line: Bencoolen → Bayfront, then 5 min walk through the underpass.",
       "pregnancyNotes": "AC throughout, benches available.",
       "googleRating": 4.6,
-      "transit": { "mode": "mrt", "duration": 15, "line": "DTL" },
+      "transit": {
+        "mode": "mrt",
+        "duration": 15,
+        "line": "DTL"
+      },
       "reservation": {
         "required": true,
         "priceSGD": "65–83pp",
@@ -463,8 +399,13 @@
       "description": "Cool, misty AC. 35m indoor waterfall, Jurassic World animatronic dinosaurs. Spiral walkways with lifts.",
       "pregnancyNotes": "Take the lifts on the spirals. Cool climate is welcome.",
       "googleRating": 4.6,
-      "transit": { "mode": "walk", "duration": 2 },
-      "tips": ["Covered by the bundle QR code — scan at entrance."]
+      "transit": {
+        "mode": "walk",
+        "duration": 2
+      },
+      "tips": [
+        "Covered by the bundle QR code — scan at entrance."
+      ]
     },
     {
       "id": "botero-exhibition",
@@ -478,8 +419,13 @@
       "lng": 103.8615,
       "description": "Largest Botero exhibition in the world — Singapore is the only SE Asia stop. ~130 original paintings, drawings, and sculptures. At IMBA Theatre, West Lawn beside Bayfront Plaza. Last admission Mon–Thu 6pm.",
       "pregnancyNotes": "AC throughout, benches available — gallery pace.",
-      "transit": { "mode": "walk", "duration": 5 },
-      "tips": ["Covered by the bundle QR code. Natural last stop before walking east to dinner."]
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      },
+      "tips": [
+        "Covered by the bundle QR code. Natural last stop before walking east to dinner."
+      ]
     },
     {
       "id": "satay-by-the-bay",
@@ -494,7 +440,10 @@
       "description": "Hawker centre inside the Gardens. Chicken satay, Hainanese chicken rice, sugar cane juice. 15–20 min golden-hour walk east through the gardens from Botero.",
       "pregnancyNotes": "Stick to grilled and cooked stalls. Satay fully cooked.",
       "googleRating": 4.0,
-      "transit": { "mode": "walk", "duration": 18 }
+      "transit": {
+        "mode": "walk",
+        "duration": 18
+      }
     },
     {
       "id": "supertree-grove",
@@ -508,7 +457,10 @@
       "lng": 103.8636,
       "description": "Supertrees synchronised to music — 10 minutes of magic. Sit on the grass at OCBC Garden Plaza. Free, nightly.",
       "googleRating": 4.7,
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "antler-ember-d5",
@@ -523,7 +475,10 @@
       "description": "Hotel restaurant breakfast before the Southern Ridges walk.",
       "pregnancyNotes": "Ask for hard-boiled eggs.",
       "googleRating": 4.9,
-      "transit": { "mode": "walk", "duration": 1 }
+      "transit": {
+        "mode": "walk",
+        "duration": 1
+      }
     },
     {
       "id": "mount-faber",
@@ -538,7 +493,10 @@
       "description": "Hilltop park with panoramic harbour views, small Merlion statue. Shaded, gentle paths. MRT Bencoolen → HarbourFront (25 min), then 10 min uphill walk.",
       "pregnancyNotes": "Gentle stairs from HarbourFront — take it slow. Benches everywhere.",
       "googleRating": 4.5,
-      "transit": { "mode": "mrt", "duration": 25 }
+      "transit": {
+        "mode": "mrt",
+        "duration": 25
+      }
     },
     {
       "id": "henderson-waves",
@@ -553,8 +511,13 @@
       "description": "Singapore's highest pedestrian bridge, 36m above the road. Seven undulating wooden ribs create sheltered alcoves with benches. Treetop-level views, never crowded. Wheelchair-accessible. Free cold-drink vending machines.",
       "pregnancyNotes": "Wide deck, gentle incline, sheltered alcoves. Bring water.",
       "googleRating": 4.5,
-      "transit": { "mode": "walk", "duration": 15 },
-      "tips": ["15 min via Marang Trail — gentle downhill paved path from Mount Faber."]
+      "transit": {
+        "mode": "walk",
+        "duration": 15
+      },
+      "tips": [
+        "15 min via Marang Trail — gentle downhill paved path from Mount Faber."
+      ]
     },
     {
       "id": "telok-blangah-hill",
@@ -568,7 +531,10 @@
       "lng": 103.8125,
       "description": "Other end of Henderson Waves. Terraced gardens, Alkaff Mansion. Forest Walk continuation closed until July 2026. Skip if tired and turn back over the bridge.",
       "pregnancyNotes": "Optional — turn back if energy is low.",
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "vivocity-lunch",
@@ -583,7 +549,10 @@
       "description": "AC mall food court at 1 HarbourFront Walk. Varied hawker-style stalls, ~SGD 12–18pp. Walk down from the trail or MRT 1 stop from HarbourFront.",
       "pregnancyNotes": "Stick to thoroughly cooked options.",
       "googleRating": 4.0,
-      "transit": { "mode": "mrt", "duration": 10 }
+      "transit": {
+        "mode": "mrt",
+        "duration": 10
+      }
     },
     {
       "id": "helix-bridge-walk",
@@ -596,7 +565,10 @@
       "lat": 1.2870,
       "lng": 103.8588,
       "description": "DNA-helix structure lit at dusk. Sunset stroll across Marina Bay to MBS.",
-      "transit": { "mode": "mrt", "duration": 10 }
+      "transit": {
+        "mode": "mrt",
+        "duration": 10
+      }
     },
     {
       "id": "celavi-skybar",
@@ -611,7 +583,10 @@
       "description": "Walk-in rooftop bar at Marina Bay Sands Tower 3, Level 57. SGD 35 cover fully redeemable on drinks and food. Virgin cocktail menu. Arrive 6:30pm for sunset before the dinner-booking crowd peaks.",
       "pregnancyNotes": "Real mocktail menu — ask the bartender. No raw seafood in bar bites.",
       "googleRating": 4.3,
-      "transit": { "mode": "walk", "duration": 5 },
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      },
       "tips": [
         "Strict dress code: covered shoes, sleeved shirt, long pants.",
         "Walk-in only — regular seats don't accept bookings."
@@ -630,7 +605,10 @@
       "description": "Free 9pm show. Watching at water level puts the lasers and fountains right in front of you — more dramatic than from the rooftop.",
       "pregnancyNotes": "Standing show — find a bench nearby if needed.",
       "googleRating": 4.4,
-      "transit": { "mode": "walk", "duration": 10 }
+      "transit": {
+        "mode": "walk",
+        "duration": 10
+      }
     },
     {
       "id": "oh-wunder-cafe",
@@ -645,7 +623,10 @@
       "description": "Sit-down brunch at 231 Bain St, #01-69 Bras Basah Complex. Mentaiko salmon spaghetti, steak & eggs, lemon tart, Wunderfolks pastries.",
       "pregnancyNotes": "Order steak medium-well; no runny eggs.",
       "googleRating": 4.5,
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "sri-mariamman",
@@ -660,8 +641,13 @@
       "description": "Sri Mariamman first (~20 min, colourful gopuram), then Buddha Tooth (~45 min) — don't miss the rooftop garden with the prayer wheel. Cover shoulders and knees.",
       "pregnancyNotes": "Gentle walking pace. Cover-up required.",
       "googleRating": 4.6,
-      "transit": { "mode": "mrt", "duration": 4 },
-      "tips": ["Shoes off at both entrances."]
+      "transit": {
+        "mode": "mrt",
+        "duration": 4
+      },
+      "tips": [
+        "Shoes off at both entrances."
+      ]
     },
     {
       "id": "chinatown-walk",
@@ -675,7 +661,10 @@
       "lng": 103.8442,
       "description": "Pagoda St (heritage shophouses, red lanterns), Smith St, Temple St (antiques, calligraphy), Sago Lane. The Sri Mariamman gopuram + Pagoda St shot is the iconic Chinatown photo.",
       "pregnancyNotes": "Flat, mostly shaded with five-foot ways.",
-      "transit": { "mode": "walk", "duration": 3 }
+      "transit": {
+        "mode": "walk",
+        "duration": 3
+      }
     },
     {
       "id": "maxwell-food-centre",
@@ -690,7 +679,10 @@
       "description": "1 Kadayanallur St. Ah Tai Hainanese Chicken Rice (#01-07) — ex-Tian Tian chef. Marina South fried carrot cake. Lao Ban soya beancurd dessert. Crowds thin after 1pm.",
       "pregnancyNotes": "Chicken rice and carrot cake fully cooked. Skip oyster omelette stalls.",
       "googleRating": 4.2,
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "thian-hock-keng",
@@ -705,7 +697,9 @@
       "description": "Thian Hock Keng temple on Telok Ayer St, then up Ann Siang Rd through restored shophouses and café-lined streets. Stop for an iced drink. OPTIONAL — skip if energy is low.",
       "pregnancyNotes": "Some inclines — use building lifts if tired. Optional.",
       "googleRating": 4.0,
-      "transit": { "mode": "walk" }
+      "transit": {
+        "mode": "walk"
+      }
     },
     {
       "id": "river-cruise",
@@ -720,7 +714,10 @@
       "description": "40-min seated cruise from Clarke Quay jetty. Passes Cavenagh Bridge, Fullerton, the Merlion, MBS. Sunset over the river. Audio narration.",
       "pregnancyNotes": "Seated, gentle, comfortable.",
       "googleRating": 4.4,
-      "transit": { "mode": "mrt", "duration": 12 },
+      "transit": {
+        "mode": "mrt",
+        "duration": 12
+      },
       "reservation": {
         "required": true,
         "deadline": "2026-05-20",
@@ -742,8 +739,13 @@
       "description": "Famous fresh tomato broth at 6 Eu Tong Sen St, #03-87 Clarke Quay Central. Get the dual broth (half tomato + half mala). Free-flow drinks, fresh fruit, soft-serve ice cream. Angus beef, fish balls, vegetables cooked at the table.",
       "pregnancyNotes": "Tomato broth side is mild and pregnancy-friendly. Cook everything thoroughly. Skip raw seafood add-ons.",
       "googleRating": 4.8,
-      "transit": { "mode": "walk", "duration": 2 },
-      "tips": ["Walk-in usually fine, or book via Chope for a guaranteed table."]
+      "transit": {
+        "mode": "walk",
+        "duration": 2
+      },
+      "tips": [
+        "Walk-in usually fine, or book via Chope for a guaranteed table."
+      ]
     },
     {
       "id": "chin-mee-chin",
@@ -758,7 +760,10 @@
       "description": "Legendary Katong kaya toast at 204 East Coast Rd. Charcoal-toasted bread, generous kaya. Many say better than Ya Kun. MRT ~30 min from hotel.",
       "pregnancyNotes": "Ask for HARD-BOILED eggs. Kaya is safe (cooked egg + coconut + sugar).",
       "googleRating": 4.0,
-      "transit": { "mode": "mrt", "duration": 30 }
+      "transit": {
+        "mode": "mrt",
+        "duration": 30
+      }
     },
     {
       "id": "koon-seng-road",
@@ -773,8 +778,13 @@
       "description": "Pastel Peranakan shophouses — the photo stop. East Coast Rd murals, Rumah Bebe for beaded slippers and batik.",
       "pregnancyNotes": "Flat walk, fine.",
       "googleRating": 4.4,
-      "transit": { "mode": "walk", "duration": 5 },
-      "tips": ["Best light before 11am."]
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      },
+      "tips": [
+        "Best light before 11am."
+      ]
     },
     {
       "id": "katong-laksa-328",
@@ -789,7 +799,10 @@
       "description": "Use the 216 East Coast Rd branch (Google 4.2) — same recipe, better-rated than the original at #51. Noodles cut short — eat with a spoon. Add an otah on the side.",
       "pregnancyNotes": "ORDER \"no cockles\" — broth, prawns, and fishcake are fully cooked and safe.",
       "googleRating": 4.2,
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "changi-luggage-store",
@@ -802,7 +815,10 @@
       "lat": 1.3602,
       "lng": 103.9898,
       "description": "Left-luggage at T1 or T3, ~SGD 14/bag for 24h. Then head to Jewel.",
-      "transit": { "mode": "mrt", "duration": 35 },
+      "transit": {
+        "mode": "mrt",
+        "duration": 35
+      },
       "tips": [
         "Grab fallback ~SGD 30 if exhausted with bags.",
         "Jewel connects to T1, T2, T3 by walkway or Skytrain."
@@ -821,7 +837,10 @@
       "description": "World's tallest indoor waterfall (40m). Walk under the Rain Vortex for free. Shiseido Forest Valley indoor terraced garden. Lifts and benches throughout.",
       "pregnancyNotes": "Lifts and benches throughout — comfortable.",
       "googleRating": 4.7,
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "jewel-browse",
@@ -835,7 +854,10 @@
       "lng": 103.9898,
       "description": "Wander the shops, find your dinner spot, sit and people-watch. AC throughout, plenty of seating.",
       "pregnancyNotes": "AC, plenty of seating.",
-      "transit": { "mode": "walk", "duration": 3 }
+      "transit": {
+        "mode": "walk",
+        "duration": 3
+      }
     },
     {
       "id": "jewel-dinner",
@@ -849,7 +871,10 @@
       "lng": 103.9898,
       "description": "Last Singapore meal. Tim Ho Wan dim sum [4.2], Five Star Hainanese Chicken Rice [4.0], or Burger & Lobster [4.3].",
       "pregnancyNotes": "Dim sum fully cooked. Skip raw shrimp dumplings if any.",
-      "transit": { "mode": "walk", "duration": 3 }
+      "transit": {
+        "mode": "walk",
+        "duration": 3
+      }
     },
     {
       "id": "jewel-rain-vortex-show",
@@ -862,7 +887,10 @@
       "lat": 1.3602,
       "lng": 103.9898,
       "description": "9pm nightly — the waterfall lights up with synchronised music. Your final Singapore moment before the terminal.",
-      "transit": { "mode": "walk", "duration": 5 }
+      "transit": {
+        "mode": "walk",
+        "duration": 5
+      }
     },
     {
       "id": "changi-airport",
@@ -874,8 +902,13 @@
       "lng": 103.9915,
       "description": "Near-midnight flight home. Pick up bags from left-luggage, transit to your departure terminal via Skytrain. Be at the gate 2 hours before.",
       "googleRating": 4.6,
-      "transit": { "mode": "walk", "duration": 10 },
-      "tips": ["Skytrain connects all terminals — no Grab needed once at the airport."]
+      "transit": {
+        "mode": "walk",
+        "duration": 10
+      },
+      "tips": [
+        "Skytrain connects all terminals — no Grab needed once at the airport."
+      ]
     }
   ]
 }

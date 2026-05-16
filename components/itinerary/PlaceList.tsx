@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { places, days } from "@/lib/data/itinerary";
 import { markerStyle } from "@/lib/markers";
 import { formatTimeRange, sortPlacesByTime } from "@/lib/time";
@@ -20,6 +21,11 @@ export function PlaceList({
   selectedPlaceId,
   lockScroll = false,
 }: PlaceListProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (lockScroll) scrollRef.current?.scrollTo({ top: 0 });
+  }, [lockScroll]);
+
   const visible = sortPlacesByTime(
     activeDay == null ? places : places.filter((p) => p.day === activeDay)
   );
@@ -41,7 +47,7 @@ export function PlaceList({
           </h2>
         )}
       </div>
-      <div className={cn("min-h-0 flex-1 px-4 pb-[20vh]", lockScroll ? "overflow-hidden" : "overflow-y-auto")}>
+      <div ref={scrollRef} className={cn("min-h-0 flex-1 px-4 pb-[20vh]", lockScroll ? "overflow-hidden" : "overflow-y-auto")}>
         <ul className="flex flex-col">
           {visible.map((place, idx) => {
             const { icon: Icon, bgClass } = markerStyle(place.category);

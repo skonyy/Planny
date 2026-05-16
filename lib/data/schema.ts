@@ -67,7 +67,7 @@ const day = z.object({
 });
 
 export const itinerarySchema = z.object({
-  days: z.array(day).length(7),
+  days: z.array(day).min(1),
   places: z.array(place).min(1),
 });
 

@@ -10,6 +10,10 @@ function shortLabel(isoDate: string): string {
   return WEEKDAY_SHORT[d.getDay()];
 }
 
+function todayIso(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
 interface DayPillsProps {
   activeDay: number | null;
   onChange: (day: number | null) => void;
@@ -17,6 +21,7 @@ interface DayPillsProps {
 }
 
 export function DayPills({ activeDay, onChange, className }: DayPillsProps) {
+  const today = todayIso();
   return (
     <div
       className={cn(
@@ -31,6 +36,7 @@ export function DayPills({ activeDay, onChange, className }: DayPillsProps) {
         <Pill
           key={d.number}
           active={activeDay === d.number}
+          past={d.date < today}
           onClick={() => onChange(d.number)}
         >
           <span className="font-semibold">{shortLabel(d.date)}</span>
@@ -43,10 +49,12 @@ export function DayPills({ activeDay, onChange, className }: DayPillsProps) {
 
 function Pill({
   active,
+  past,
   onClick,
   children,
 }: {
   active: boolean;
+  past?: boolean;
   onClick: () => void;
   children: React.ReactNode;
 }) {
@@ -58,7 +66,8 @@ function Pill({
         "shrink-0 snap-start rounded-full border px-4 py-1.5 text-sm transition-colors",
         active
           ? "border-foreground bg-foreground text-background"
-          : "border-border bg-background text-muted-foreground hover:text-foreground"
+          : "border-border bg-background text-muted-foreground hover:text-foreground",
+        past && !active && "opacity-50",
       )}
     >
       {children}

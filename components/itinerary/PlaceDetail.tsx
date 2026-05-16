@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { getPlace, getDay, places } from "@/lib/data/itinerary";
 import { markerStyle } from "@/lib/markers";
 import { useCurrentTime } from "@/lib/hooks/use-current-time";
@@ -34,6 +35,11 @@ interface PlaceDetailProps {
 }
 
 export function PlaceDetail({ placeId, onBack, lockScroll = false }: PlaceDetailProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (lockScroll) scrollRef.current?.scrollTo({ top: 0 });
+  }, [lockScroll]);
+
   const place = getPlace(placeId);
   const now = useCurrentTime();
 
@@ -67,7 +73,7 @@ export function PlaceDetail({ placeId, onBack, lockScroll = false }: PlaceDetail
           Back
         </Button>
       </div>
-      <div className={`min-h-0 flex-1 px-4 pb-[20vh] ${lockScroll ? "overflow-hidden" : "overflow-y-auto"}`}>
+      <div ref={scrollRef} className={`min-h-0 flex-1 px-4 pb-[20vh] ${lockScroll ? "overflow-hidden" : "overflow-y-auto"}`}>
         <div className="flex items-start gap-3">
           <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white ${bgClass}`}>
             <Icon className="h-5 w-5" strokeWidth={2.4} />
