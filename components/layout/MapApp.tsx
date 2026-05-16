@@ -122,6 +122,10 @@ export function MapApp() {
     else handleDayChange(days[idx - 1].number);
   }, [activeDay, handleDayChange]);
 
+  const lastDay = days[days.length - 1];
+  const canSwipeLeft = !(activeDay !== null && activeDay === lastDay?.number);
+  const canSwipeRight = activeDay !== null;
+
   const [viewportH, setViewportH] = useState(0);
   useEffect(() => {
     const update = () => setViewportH(window.innerHeight);
@@ -217,7 +221,7 @@ export function MapApp() {
               <Route className="h-5 w-5" />
             </button>
           )}
-          <BottomSheet snap={snap} onSnapChange={setSnap} onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight}>
+          <BottomSheet snap={snap} onSnapChange={setSnap} onSwipeLeft={canSwipeLeft ? handleSwipeLeft : undefined} onSwipeRight={canSwipeRight ? handleSwipeRight : undefined}>
             {selectedPlaceId ? (
               <PlaceDetail
                 placeId={selectedPlaceId}
