@@ -39,7 +39,7 @@ export function PlaceList({
           </h2>
         )}
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-6">
+      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-[20vh]">
         <ul className="flex flex-col">
           {visible.map((place, idx) => {
             const { icon: Icon, bgClass } = markerStyle(place.category);
