@@ -41,7 +41,7 @@ export function DayPills({ activeDay, onChange, className }: DayPillsProps) {
     <div
       ref={scrollerRef}
       className={cn(
-        "flex w-full snap-x snap-mandatory gap-2 overflow-x-auto px-5 py-2 scroll-px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+        "flex w-full snap-x snap-mandatory gap-2 overflow-x-auto px-2 py-2 scroll-px-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
         className
       )}
     >
