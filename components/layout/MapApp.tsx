@@ -11,6 +11,7 @@ import {
   BottomSheet,
   SHEET_SNAP_POINTS,
   type SheetSnap,
+  type BottomSheetHandle,
 } from "@/components/layout/BottomSheet";
 import { DesktopPanel } from "@/components/layout/DesktopPanel";
 import { FabReservations } from "@/components/layout/FabReservations";
@@ -41,6 +42,7 @@ export function MapApp() {
   const [snap, setSnap] = useState<SheetSnap | null>(() =>
     selectedPlaceId ? SHEET_SNAP_POINTS[2] : SHEET_SNAP_POINTS[1]
   );
+  const bottomSheetRef = useRef<BottomSheetHandle>(null);
   const [reservationsOpen, setReservationsOpen] = useState(false);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [isTracking, setIsTracking] = useState(false);
@@ -88,20 +90,39 @@ export function MapApp() {
 
   const handleSelectPlace = useCallback(
     (id: string) => {
-      setSnap(SHEET_SNAP_POINTS[1]);
-      updateUrl({ placeId: id });
+      const doNavigate = () => {
+        setSnap(SHEET_SNAP_POINTS[1]);
+        updateUrl({ placeId: id });
+      };
+      bottomSheetRef.current ? bottomSheetRef.current.animate("left", doNavigate) : doNavigate();
     },
     [updateUrl]
   );
 
   const handleBack = useCallback(() => {
+    const doNavigate = () => {
+      setSnap(SHEET_SNAP_POINTS[1]);
+      updateUrl({ placeId: null });
+    };
+    bottomSheetRef.current ? bottomSheetRef.current.animate("right", doNavigate) : doNavigate();
+  }, [updateUrl]);
+
+  // For swipe-left in detail: swipe animation already plays, just update state
+  const handleSwipeBackDirect = useCallback(() => {
     setSnap(SHEET_SNAP_POINTS[1]);
     updateUrl({ placeId: null });
   }, [updateUrl]);
 
   const handleDayChange = useCallback(
-    (day: number | null) => updateUrl({ day, placeId: null }),
-    [updateUrl]
+    (day: number | null) => {
+      if (selectedPlaceId) {
+        const doNavigate = () => updateUrl({ day, placeId: null });
+        bottomSheetRef.current ? bottomSheetRef.current.animate("right", doNavigate) : doNavigate();
+      } else {
+        updateUrl({ day, placeId: null });
+      }
+    },
+    [selectedPlaceId, updateUrl]
   );
 
   const handleSwipeLeft = useCallback(() => {
@@ -221,7 +242,13 @@ export function MapApp() {
               <Route className="h-5 w-5" />
             </button>
           )}
-          <BottomSheet snap={snap} onSnapChange={setSnap} onSwipeLeft={canSwipeLeft ? handleSwipeLeft : undefined} onSwipeRight={canSwipeRight ? handleSwipeRight : undefined}>
+          <BottomSheet
+            ref={bottomSheetRef}
+            snap={snap}
+            onSnapChange={setSnap}
+            onSwipeLeft={selectedPlaceId ? handleSwipeBackDirect : (canSwipeLeft ? handleSwipeLeft : undefined)}
+            onSwipeRight={selectedPlaceId ? undefined : (canSwipeRight ? handleSwipeRight : undefined)}
+          >
             {selectedPlaceId ? (
               <PlaceDetail
                 placeId={selectedPlaceId}
