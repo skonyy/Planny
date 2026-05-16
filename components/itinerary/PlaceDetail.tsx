@@ -30,9 +30,10 @@ import type { Place, Day } from "@/lib/types";
 interface PlaceDetailProps {
   placeId: string;
   onBack: () => void;
+  lockScroll?: boolean;
 }
 
-export function PlaceDetail({ placeId, onBack }: PlaceDetailProps) {
+export function PlaceDetail({ placeId, onBack, lockScroll = false }: PlaceDetailProps) {
   const place = getPlace(placeId);
   const now = useCurrentTime();
 
@@ -66,7 +67,7 @@ export function PlaceDetail({ placeId, onBack }: PlaceDetailProps) {
           Back
         </Button>
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-[20vh]">
+      <div className={`min-h-0 flex-1 px-4 pb-[20vh] ${lockScroll ? "overflow-hidden" : "overflow-y-auto"}`}>
         <div className="flex items-start gap-3">
           <span className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white ${bgClass}`}>
             <Icon className="h-5 w-5" strokeWidth={2.4} />

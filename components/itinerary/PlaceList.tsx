@@ -11,12 +11,14 @@ interface PlaceListProps {
   activeDay: number | null;
   onSelectPlace: (id: string) => void;
   selectedPlaceId: string | null;
+  lockScroll?: boolean;
 }
 
 export function PlaceList({
   activeDay,
   onSelectPlace,
   selectedPlaceId,
+  lockScroll = false,
 }: PlaceListProps) {
   const visible = sortPlacesByTime(
     activeDay == null ? places : places.filter((p) => p.day === activeDay)
@@ -39,7 +41,7 @@ export function PlaceList({
           </h2>
         )}
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-[20vh]">
+      <div className={cn("min-h-0 flex-1 px-4 pb-[20vh]", lockScroll ? "overflow-hidden" : "overflow-y-auto")}>
         <ul className="flex flex-col">
           {visible.map((place, idx) => {
             const { icon: Icon, bgClass } = markerStyle(place.category);

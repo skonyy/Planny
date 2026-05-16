@@ -213,12 +213,17 @@ export function MapApp() {
           )}
           <BottomSheet snap={snap} onSnapChange={setSnap} onSwipeLeft={handleSwipeLeft} onSwipeRight={handleSwipeRight}>
             {selectedPlaceId ? (
-              <PlaceDetail placeId={selectedPlaceId} onBack={handleBack} />
+              <PlaceDetail
+                placeId={selectedPlaceId}
+                onBack={handleBack}
+                lockScroll={snap !== SHEET_SNAP_POINTS[2]}
+              />
             ) : (
               <PlaceList
                 activeDay={activeDay}
                 onSelectPlace={handleSelectPlace}
                 selectedPlaceId={selectedPlaceId}
+                lockScroll={snap !== SHEET_SNAP_POINTS[2]}
               />
             )}
           </BottomSheet>
