@@ -37,8 +37,16 @@ interface PlaceDetailProps {
 export function PlaceDetail({ placeId, onBack, lockScroll = false }: PlaceDetailProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    if (lockScroll) scrollRef.current?.scrollTo({ top: 0 });
-  }, [lockScroll]);
+    const el = scrollRef.current;
+    if (!el) return;
+    const update = () => {
+      if (el.scrollTop > 0) el.setAttribute("data-vaul-no-drag", "");
+      else el.removeAttribute("data-vaul-no-drag");
+    };
+    el.addEventListener("scroll", update, { passive: true });
+    update();
+    return () => el.removeEventListener("scroll", update);
+  }, []);
 
   const place = getPlace(placeId);
   const now = useCurrentTime();
