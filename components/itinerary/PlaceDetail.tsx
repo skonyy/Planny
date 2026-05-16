@@ -23,6 +23,7 @@ import {
   Footprints,
   TrainFront,
   Star,
+  MapPin,
 } from "lucide-react";
 import type { Place, Day } from "@/lib/types";
 
@@ -50,6 +51,7 @@ export function PlaceDetail({ placeId, onBack }: PlaceDetailProps) {
   const { icon: Icon, bgClass, label } = markerStyle(place.category);
   const day = getDay(place.day);
 
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name)}&query_place_id=&center=${place.lat},${place.lng}`;
   const walkUrl = `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}&travelmode=walking`;
   const transitUrl = `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}&travelmode=transit`;
 
@@ -150,6 +152,12 @@ export function PlaceDetail({ placeId, onBack }: PlaceDetailProps) {
         <Separator className="my-5" />
 
         <div className="flex gap-2">
+          <Button asChild size="sm" className="flex-1">
+            <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
+              <MapPin className="h-3.5 w-3.5" />
+              Open in Maps
+            </a>
+          </Button>
           <Button asChild variant="outline" size="sm" className="flex-1">
             <a href={walkUrl} target="_blank" rel="noopener noreferrer">
               <Footprints className="h-3.5 w-3.5" />
