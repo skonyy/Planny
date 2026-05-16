@@ -75,7 +75,7 @@ export function PlaceDetail({ placeId, onBack, lockScroll = false }: PlaceDetail
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex items-center border-b px-4 py-2">
+      <div className="flex items-center px-4 pt-2 pb-5">
         <Button variant="ghost" size="sm" onClick={onBack} className="-ml-1">
           <ArrowLeft className="h-4 w-4" />
           Back
