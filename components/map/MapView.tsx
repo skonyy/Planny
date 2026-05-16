@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useImperativeHandle, useMemo, useRef, forwardRef, useState, type Ref } from "react";
 import Map, {
   Marker,
   NavigationControl,
@@ -12,6 +12,14 @@ import { places } from "@/lib/data/itinerary";
 import { sortPlacesByTime } from "@/lib/time";
 import { PlaceMarker } from "./PlaceMarker";
 
+function readToken(name: string, fallback: string): string {
+  if (typeof window === "undefined") return fallback;
+  const v = getComputedStyle(document.documentElement)
+    .getPropertyValue(name)
+    .trim();
+  return v || fallback;
+}
+
 const SINGAPORE_VIEW = {
   longitude: 103.8516,
   latitude: 1.3000,
@@ -19,6 +27,10 @@ const SINGAPORE_VIEW = {
 };
 
 const STYLE_URL = "https://tiles.openfreemap.org/styles/positron";
+
+export interface MapViewHandle {
+  fitBoundsToDay: (day: number, bottomPadding: number) => void;
+}
 
 interface MapViewProps {
   activeDay: number | null;
@@ -30,7 +42,7 @@ interface MapViewProps {
   showRoute?: boolean;
 }
 
-export function MapView({
+export const MapView = forwardRef<MapViewHandle, MapViewProps>(function MapView({
   activeDay,
   selectedPlaceId,
   onSelectPlace,
@@ -38,9 +50,28 @@ export function MapView({
   showNavigation = true,
   userLocation,
   showRoute = true,
-}: MapViewProps) {
+}: MapViewProps, ref: Ref<MapViewHandle>) {
   const mapRef = useRef<MapRef>(null);
   const hasFlownToUser = useRef(false);
+
+  useImperativeHandle(ref, () => ({
+    fitBoundsToDay: (day: number, padding: number) => {
+      const map = mapRef.current;
+      if (!map) return;
+      const dayPlaces = places.filter((p) => p.day === day);
+      if (dayPlaces.length === 0) return;
+      const lngs = dayPlaces.map((p) => p.lng);
+      const lats = dayPlaces.map((p) => p.lat);
+      map.fitBounds(
+        [[Math.min(...lngs), Math.min(...lats)], [Math.max(...lngs), Math.max(...lats)]],
+        { padding: { top: 80, bottom: padding, left: 40, right: 40 }, duration: 700, maxZoom: 15 }
+      );
+    },
+  }), []);
+  const [routeLineColor, setRouteLineColor] = useState("#454545");
+  useEffect(() => {
+    setRouteLineColor(readToken("--map-route-line", "#454545"));
+  }, []);
 
   const visible = useMemo(
     () => (activeDay == null ? places : places.filter((p) => p.day === activeDay)),
@@ -138,7 +169,7 @@ export function MapView({
             id="day-route-line"
             type="line"
             paint={{
-              "line-color": "#374151",
+              "line-color": routeLineColor,
               "line-width": 2.5,
               "line-opacity": 0.55,
               "line-dasharray": [2, 2],
@@ -178,6 +209,6 @@ export function MapView({
       ))}
     </Map>
   );
-}
+});
 
 export default MapView;

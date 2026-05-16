@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { MapView } from "@/components/map/MapView";
+import { MapView, type MapViewHandle } from "@/components/map/MapView";
 import { DayPills } from "@/components/itinerary/DayPills";
 import { PlaceList } from "@/components/itinerary/PlaceList";
 import { PlaceDetail } from "@/components/itinerary/PlaceDetail";
@@ -43,7 +43,9 @@ export function MapApp() {
     selectedPlaceId ? SHEET_SNAP_POINTS[2] : SHEET_SNAP_POINTS[1]
   );
   const bottomSheetRef = useRef<BottomSheetHandle>(null);
+  const mapViewRef = useRef<MapViewHandle>(null);
   const [reservationsOpen, setReservationsOpen] = useState(false);
+  const [viewportH, setViewportH] = useState(0);
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
   const [isTracking, setIsTracking] = useState(false);
   const [showRoute, setShowRoute] = useState(true);
@@ -90,28 +92,34 @@ export function MapApp() {
 
   const handleSelectPlace = useCallback(
     (id: string) => {
-      const doNavigate = () => {
-        setSnap(SHEET_SNAP_POINTS[1]);
-        updateUrl({ placeId: id });
-      };
+      setSnap(SHEET_SNAP_POINTS[1]);
+      const doNavigate = () => updateUrl({ placeId: id });
       bottomSheetRef.current ? bottomSheetRef.current.animate("left", doNavigate) : doNavigate();
     },
     [updateUrl]
   );
 
   const handleBack = useCallback(() => {
+    setSnap(SHEET_SNAP_POINTS[1]);
     const doNavigate = () => {
-      setSnap(SHEET_SNAP_POINTS[1]);
       updateUrl({ placeId: null });
+      if (activeDay != null) {
+        const padding = isDesktop ? 60 : Math.round(viewportH * SHEET_SNAP_POINTS[1]);
+        mapViewRef.current?.fitBoundsToDay(activeDay, padding);
+      }
     };
     bottomSheetRef.current ? bottomSheetRef.current.animate("right", doNavigate) : doNavigate();
-  }, [updateUrl]);
+  }, [updateUrl, activeDay, isDesktop, viewportH]);
 
   // For swipe-left in detail: swipe animation already plays, just update state
   const handleSwipeBackDirect = useCallback(() => {
     setSnap(SHEET_SNAP_POINTS[1]);
     updateUrl({ placeId: null });
-  }, [updateUrl]);
+    if (activeDay != null) {
+      const padding = isDesktop ? 60 : Math.round(viewportH * SHEET_SNAP_POINTS[1]);
+      mapViewRef.current?.fitBoundsToDay(activeDay, padding);
+    }
+  }, [updateUrl, activeDay, isDesktop, viewportH]);
 
   const handleDayChange = useCallback(
     (day: number | null) => {
@@ -147,7 +155,6 @@ export function MapApp() {
   const canSwipeLeft = !(activeDay !== null && activeDay === lastDay?.number);
   const canSwipeRight = activeDay !== null;
 
-  const [viewportH, setViewportH] = useState(0);
   useEffect(() => {
     const update = () => setViewportH(window.innerHeight);
     update();
@@ -170,6 +177,7 @@ export function MapApp() {
         style={isDesktop ? { left: DESKTOP_LEFT_PAD } : undefined}
       >
         <MapView
+          ref={mapViewRef}
           activeDay={activeDay}
           selectedPlaceId={selectedPlaceId}
           onSelectPlace={handleSelectPlace}
