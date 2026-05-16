@@ -14,7 +14,7 @@ export function PlaceMarker({ place, selected }: PlaceMarkerProps) {
   return (
     <div
       className={cn(
-        "flex h-8 w-8 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-2 border-background text-white shadow-md transition-transform duration-200",
+        "flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border-2 border-background text-white shadow-md transition-transform duration-200",
         bgClass,
         selected && "scale-125 ring-4 ring-foreground/30"
       )}
