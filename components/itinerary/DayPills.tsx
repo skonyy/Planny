@@ -1,5 +1,6 @@
 "use client";
 
+import { forwardRef, useEffect, useRef } from "react";
 import { days } from "@/lib/data/itinerary";
 import { cn } from "@/lib/utils";
 
@@ -22,14 +23,33 @@ interface DayPillsProps {
 
 export function DayPills({ activeDay, onChange, className }: DayPillsProps) {
   const today = todayIso();
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const activeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const el = activeRef.current;
+    const scroller = scrollerRef.current;
+    if (!el || !scroller) return;
+    const elRect = el.getBoundingClientRect();
+    const scRect = scroller.getBoundingClientRect();
+    if (elRect.left < scRect.left || elRect.right > scRect.right) {
+      el.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
+  }, [activeDay]);
+
   return (
     <div
+      ref={scrollerRef}
       className={cn(
-        "flex w-full snap-x snap-mandatory gap-2 overflow-x-auto px-4 py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+        "flex w-full snap-x snap-mandatory gap-2 overflow-x-auto px-5 py-2 scroll-px-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
         className
       )}
     >
-      <Pill active={activeDay === null} onClick={() => onChange(null)}>
+      <Pill
+        active={activeDay === null}
+        onClick={() => onChange(null)}
+        ref={activeDay === null ? activeRef : undefined}
+      >
         All
       </Pill>
       {days.map((d) => (
@@ -39,6 +59,7 @@ export function DayPills({ activeDay, onChange, className }: DayPillsProps) {
           today={d.date === today}
           past={d.date < today}
           onClick={() => onChange(d.number)}
+          ref={activeDay === d.number ? activeRef : undefined}
         >
           <span className="font-semibold">{shortLabel(d.date)}</span>
           <span className="text-xs opacity-70"> · {d.number}</span>
@@ -48,21 +69,19 @@ export function DayPills({ activeDay, onChange, className }: DayPillsProps) {
   );
 }
 
-function Pill({
-  active,
-  today,
-  past,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  today?: boolean;
-  past?: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
+const Pill = forwardRef<
+  HTMLButtonElement,
+  {
+    active: boolean;
+    today?: boolean;
+    past?: boolean;
+    onClick: () => void;
+    children: React.ReactNode;
+  }
+>(function Pill({ active, today, past, onClick, children }, ref) {
   return (
     <button
+      ref={ref}
       type="button"
       onClick={onClick}
       className={cn(
@@ -82,6 +101,6 @@ function Pill({
       )}
     </button>
   );
-}
+});
 
 export default DayPills;
